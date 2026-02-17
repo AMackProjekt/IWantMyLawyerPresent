@@ -12,7 +12,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      router.push("/portal/auth");
+      router.push("/shop/auth");
     }
   }, [isAuthenticated, router]);
 

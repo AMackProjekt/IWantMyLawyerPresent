@@ -28,7 +28,7 @@ export default function AuthPage() {
         : await signup(email, password, name);
 
       if (success) {
-        router.push("/portal/dashboard");
+        router.push("/shop/products");
       } else {
         setError(isLogin ? "Invalid credentials" : "Signup failed");
       }

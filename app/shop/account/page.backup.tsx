@@ -17,7 +17,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      router.push("/portal/auth");
+      router.push("/shop/auth");
       return;
     }
     if (user) {
@@ -50,7 +50,7 @@ export default function ProfilePage() {
       <header className="border-b border-border bg-panel/50 backdrop-blur-xl">
         <div className="mx-auto max-w-container px-7 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <button onClick={() => router.push("/portal/dashboard")} className="text-brand hover:text-brand2">
+            <button onClick={() => router.push("/shop/products")} className="text-brand hover:text-brand2">
               ← Back to Dashboard
             </button>
           </div>

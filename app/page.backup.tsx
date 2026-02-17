@@ -51,14 +51,14 @@ export default function Page() {
           </ElectricButton>
           <Button 
             variant="primary" 
-            href="/portal/auth"
+            href="/shop/auth"
             aria-label="Sign up and get started with our platform"
           >
             Get Started
           </Button>
           <Button 
             variant="ghost" 
-            href="/portal/dashboard"
+            href="/shop/products"
             aria-label="View the user dashboard and platform overview"
           >
             View Platform
@@ -157,7 +157,7 @@ export default function Page() {
               <Button variant="primary" href="/reentry" className="flex-1">
                 Learn More
               </Button>
-              <Button variant="ghost" href="/portal/auth">
+              <Button variant="ghost" href="/shop/auth">
                 Get Started
               </Button>
             </div>
