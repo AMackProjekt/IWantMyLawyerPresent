@@ -8,9 +8,9 @@ import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/GoogleTagManager";
 
 export const metadata: Metadata = {
-  title: "AMP - A MackProjekt | Innovation Lab of MackEnterprises",
-  description: "AMP (A MackProjekt) - The innovation lab behind MackEnterprises. Creating cutting-edge digital solutions, platforms, and experiences that harness the power of AI to destroy the digital divide.",
-  metadataBase: new URL("https://mackprojekt.com"),
+  title: "I Want My Lawyer Present - Legal Rights Merchandise",
+  description: "Premium merchandise celebrating your constitutional rights. Shop our collection of apparel, accessories, and educational materials.",
+  metadataBase: new URL("https://iwantmylawyerpresent.com"),
   manifest: "/manifest.json",
   icons: {
     icon: "/logos/amp-logo.jpeg",
@@ -19,34 +19,34 @@ export const metadata: Metadata = {
       { url: "/logos/amp-logo.jpeg", sizes: "180x180", type: "image/jpeg" },
     ],
   },
-  keywords: ["AMP", "A MackProjekt", "MackEnterprises", "AI", "Digital Solutions", "Web Development", "Innovation", "Technology"],
-  authors: [{ name: "Donyale Mack" }],
-  creator: "MackEnterprises",
-  publisher: "MackEnterprises",
+  keywords: ["Legal Rights", "Constitutional Rights", "Legal Merchandise", "Know Your Rights", "Legal Education", "Apparel", "Accessories"],
+  authors: [{ name: "I Want My Lawyer Present" }],
+  creator: "I Want My Lawyer Present",
+  publisher: "I Want My Lawyer Present",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "A MackProjekt",
+    title: "I Want My Lawyer Present",
   },
   openGraph: {
-    title: "AMP - A MackProjekt | Innovation Lab",
-    description: "Creating cutting-edge digital solutions that harness AI to destroy the digital divide.",
-    url: "https://mackprojekt.com",
-    siteName: "A MackProjekt",
+    title: "I Want My Lawyer Present - Legal Rights Merchandise",
+    description: "Premium merchandise celebrating your constitutional rights. Shop our collection of apparel, accessories, and educational materials.",
+    url: "https://iwantmylawyerpresent.com",
+    siteName: "I Want My Lawyer Present",
     type: "website",
     images: [
       {
         url: "/logos/amp-logo.jpeg",
         width: 1200,
         height: 630,
-        alt: "AMP - A MackProjekt Logo",
+        alt: "I Want My Lawyer Present Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AMP - A MackProjekt | Innovation Lab",
-    description: "Creating cutting-edge digital solutions that harness AI to destroy the digital divide.",
+    title: "I Want My Lawyer Present - Legal Rights Merchandise",
+    description: "Premium merchandise celebrating your constitutional rights.",
     images: ["/logos/amp-logo.jpeg"],
   },
 };
