@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Users, Heart, Clock, AlertTriangle } from 'lucide-react';
-import { LocationFilter } from '../types';
+import type { LocationFilter } from '../types';
 import { statisticsData } from '../data/statistics';
 import StatsCounter from './StatsCounter';
 import GeographicFilter from './GeographicFilter';

@@ -1,4 +1,4 @@
-import { ConvictionStats } from '../types';
+import type { ConvictionStats } from '../types';
 
 // Mock statistical data for demonstration purposes
 // Note: These are sample numbers for demonstration only

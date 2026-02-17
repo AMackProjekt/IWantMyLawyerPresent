@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { LocationFilter } from '../types';
+import type { LocationFilter } from '../types';
 import { locationLabels } from '../data/statistics';
 
 interface GeographicFilterProps {
