@@ -3,8 +3,8 @@ import { Footer } from "@/components/ui/Footer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata = {
-  title: "Terms of Service - A MackProjekt",
-  description: "Terms and conditions for using our services",
+  title: "Terms of Service - I Want My Lawyer Present",
+  description: "Terms and conditions for purchasing our merchandise",
 };
 
 export default function TermsPage() {

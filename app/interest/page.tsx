@@ -95,7 +95,7 @@ export default function InterestPage() {
       {/* Footer */}
       <footer className="mx-auto max-w-container px-7 py-8 text-center">
         <div className="text-xs text-muted">
-          © {new Date().getFullYear()} T.O.O.L.S Inc · Empowering individuals to start over and unlock their full potential
+          © {new Date().getFullYear()} I Want My Lawyer Present · Know Your Rights, Protect Your Freedom
         </div>
       </footer>
     </main>

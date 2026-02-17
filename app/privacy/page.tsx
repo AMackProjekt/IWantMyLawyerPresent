@@ -3,7 +3,7 @@ import { Footer } from "@/components/ui/Footer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata = {
-  title: "Privacy Policy - A MackProjekt",
+  title: "Privacy Policy - I Want My Lawyer Present",
   description: "Our privacy policy and data protection practices",
 };
 

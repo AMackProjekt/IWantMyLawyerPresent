@@ -54,8 +54,8 @@ export default function AuthPage() {
           </h1>
           <p className="mt-2 text-sm text-muted">
             {isLogin
-              ? "Sign in to access your learning portal"
-              : "Start your journey with T.O.O.L.S Inc"}
+              ? "Sign in to access your account and orders"
+              : "Join us to start shopping legal rights merchandise"}
           </p>
         </div>
 
