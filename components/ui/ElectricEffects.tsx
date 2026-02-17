@@ -7,7 +7,7 @@ interface ElectricBorderProps {
   children: React.ReactNode;
   className?: string;
   intensity?: "low" | "medium" | "high";
-  color?: "green" | "brand" | "brand2" | "accent";
+  color?: "green" | "brand" | "brand2" | "accent" | "gold";
 }
 
 export function ElectricBorder({
@@ -24,22 +24,28 @@ export function ElectricBorder({
       accent: "border-green-400",
     },
     brand: {
-      shadow: "shadow-[0_0_30px_rgba(56,189,248,0.3),0_0_60px_rgba(56,189,248,0.2)]",
+      shadow: "shadow-[0_0_30px_rgba(212,175,55,0.3),0_0_60px_rgba(212,175,55,0.2)]",
       border: "border-brand/30",
       gradient: "from-brand/20",
       accent: "border-brand",
     },
     brand2: {
-      shadow: "shadow-[0_0_30px_rgba(45,212,191,0.3),0_0_60px_rgba(45,212,191,0.2)]",
+      shadow: "shadow-[0_0_30px_rgba(192,192,192,0.3),0_0_60px_rgba(192,192,192,0.2)]",
       border: "border-brand2/30",
       gradient: "from-brand2/20",
       accent: "border-brand2",
     },
     accent: {
-      shadow: "shadow-[0_0_30px_rgba(167,139,250,0.3),0_0_60px_rgba(167,139,250,0.2)]",
+      shadow: "shadow-[0_0_30px_rgba(139,69,19,0.3),0_0_60px_rgba(139,69,19,0.2)]",
       border: "border-accent/30",
       gradient: "from-accent/20",
       accent: "border-accent",
+    },
+    gold: {
+      shadow: "shadow-[0_0_30px_rgba(212,175,55,0.3),0_0_60px_rgba(212,175,55,0.2)]",
+      border: "border-brand/30",
+      gradient: "from-brand/20",
+      accent: "border-brand",
     },
   };
 
@@ -99,7 +105,7 @@ export function ElectricBorder({
 interface ElectricTextProps {
   children: React.ReactNode;
   className?: string;
-  color?: "green" | "brand" | "brand2" | "accent";
+  color?: "green" | "brand" | "brand2" | "accent" | "gold";
 }
 
 export function ElectricText({ children, className, color = "green" }: ElectricTextProps) {
@@ -108,6 +114,7 @@ export function ElectricText({ children, className, color = "green" }: ElectricT
     brand: "from-brand via-brand to-brand2",
     brand2: "from-brand2 via-brand2 to-accent",
     accent: "from-accent via-accent to-brand",
+    gold: "from-brand via-brand to-brand2",
   };
 
   return (
@@ -127,7 +134,7 @@ interface ElectricButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
-  color?: "green" | "brand" | "brand2" | "accent";
+  color?: "green" | "brand" | "brand2" | "accent" | "gold";
   variant?: "solid" | "outline";
 }
 
@@ -140,9 +147,10 @@ export function ElectricButton({
 }: ElectricButtonProps) {
   const solidColors = {
     green: "bg-gradient-to-r from-green-400 to-green-500 text-bg shadow-[0_0_20px_rgba(34,197,94,0.4)] hover:shadow-[0_0_30px_rgba(34,197,94,0.6)]",
-    brand: "bg-gradient-to-r from-brand to-brand text-bg shadow-[0_0_20px_rgba(56,189,248,0.4)] hover:shadow-[0_0_30px_rgba(56,189,248,0.6)]",
-    brand2: "bg-gradient-to-r from-brand2 to-brand2 text-bg shadow-[0_0_20px_rgba(45,212,191,0.4)] hover:shadow-[0_0_30px_rgba(45,212,191,0.6)]",
-    accent: "bg-gradient-to-r from-accent to-accent text-bg shadow-[0_0_20px_rgba(167,139,250,0.4)] hover:shadow-[0_0_30px_rgba(167,139,250,0.6)]",
+    brand: "bg-gradient-to-r from-brand to-brand text-bg shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)]",
+    brand2: "bg-gradient-to-r from-brand2 to-brand2 text-bg shadow-[0_0_20px_rgba(192,192,192,0.4)] hover:shadow-[0_0_30px_rgba(192,192,192,0.6)]",
+    accent: "bg-gradient-to-r from-accent to-accent text-bg shadow-[0_0_20px_rgba(139,69,19,0.4)] hover:shadow-[0_0_30px_rgba(139,69,19,0.6)]",
+    gold: "bg-gradient-to-r from-brand to-brand text-bg shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)]",
   };
 
   const outlineColors = {
@@ -150,6 +158,7 @@ export function ElectricButton({
     brand: "border-2 border-brand text-brand hover:bg-brand/10",
     brand2: "border-2 border-brand2 text-brand2 hover:bg-brand2/10",
     accent: "border-2 border-accent text-accent hover:bg-accent/10",
+    gold: "border-2 border-brand text-brand hover:bg-brand/10",
   };
 
   return (
@@ -170,7 +179,7 @@ export function ElectricButton({
 
 interface ElectricDividerProps {
   className?: string;
-  color?: "green" | "brand" | "brand2" | "accent";
+  color?: "green" | "brand" | "brand2" | "accent" | "gold";
 }
 
 export function ElectricDivider({ className, color = "green" }: ElectricDividerProps) {
@@ -179,6 +188,7 @@ export function ElectricDivider({ className, color = "green" }: ElectricDividerP
     brand: "from-transparent via-brand to-transparent",
     brand2: "from-transparent via-brand2 to-transparent",
     accent: "from-transparent via-accent to-transparent",
+    gold: "from-transparent via-brand to-transparent",
   };
 
   return (
