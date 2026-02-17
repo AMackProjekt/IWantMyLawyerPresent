@@ -69,7 +69,7 @@ export default function Page() {
         </div>
 
         <div className="mt-12 text-center">
-          <Button variant="primary" href="/shop/products" size="lg">View All Products →</Button>
+          <Button variant="primary" href="/shop/products" className="px-8 py-4 text-lg">View All Products →</Button>
         </div>
       </section>
 
@@ -90,13 +90,14 @@ export default function Page() {
             { icon: "🏠", name: "Home & Office", count: "6 products", description: "Decor and desk items" },
             { icon: "📚", name: "Books & Media", count: "15 products", description: "Educational materials" }
           ].map((category) => (
-            <GlowCard key={category.name} className="group hover:shadow-neon transition-all duration-300 cursor-pointer p-6"
-              onClick={() => window.location.href = '/shop/categories'}>
-              <div className="text-5xl mb-4">{category.icon}</div>
-              <div className="text-lg font-extrabold tracking-tight text-text mb-1">{category.name}</div>
-              <div className="text-xs text-brand mb-2">{category.count}</div>
-              <div className="text-sm text-muted">{category.description}</div>
-            </GlowCard>
+            <a key={category.name} href="/shop/categories">
+              <GlowCard className="group hover:shadow-neon transition-all duration-300 cursor-pointer p-6">
+                <div className="text-5xl mb-4">{category.icon}</div>
+                <div className="text-lg font-extrabold tracking-tight text-text mb-1">{category.name}</div>
+                <div className="text-xs text-brand mb-2">{category.count}</div>
+                <div className="text-sm text-muted">{category.description}</div>
+              </GlowCard>
+            </a>
           ))}
         </div>
       </section>

@@ -120,31 +120,32 @@ export default function CategoriesPage() {
                 onMouseEnter={() => setHoveredCategory(category.id)}
                 onMouseLeave={() => setHoveredCategory(null)}
               >
-                <GlowCard 
-                  className={`p-6 h-full flex flex-col cursor-pointer transition-all ${
-                    hoveredCategory === category.id ? "shadow-neon scale-105" : ""
-                  }`}
-                  onClick={() => navigateToProducts(category.id)}
-                >
-                  <div className="text-6xl mb-4">{category.icon}</div>
-                  
-                  <h3 className="text-xl font-extrabold tracking-tight text-text mb-2">
-                    {category.name}
-                  </h3>
-                  
-                  <p className="text-sm text-muted leading-relaxed mb-4 flex-1">
-                    {category.description}
-                  </p>
+                <a href={`/shop/products?category=${category.id}`}>
+                  <GlowCard 
+                    className={`p-6 h-full flex flex-col cursor-pointer transition-all ${
+                      hoveredCategory === category.id ? "shadow-neon scale-105" : ""
+                    }`}
+                  >
+                    <div className="text-6xl mb-4">{category.icon}</div>
+                    
+                    <h3 className="text-xl font-extrabold tracking-tight text-text mb-2">
+                      {category.name}
+                    </h3>
+                    
+                    <p className="text-sm text-muted leading-relaxed mb-4 flex-1">
+                      {category.description}
+                    </p>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-border">
-                    <span className="text-xs text-muted">
-                      {category.productCount} products
-                    </span>
-                    <span className="text-brand text-sm font-semibold">
-                      Browse →
-                    </span>
-                  </div>
-                </GlowCard>
+                    <div className="flex items-center justify-between pt-4 border-t border-border">
+                      <span className="text-xs text-muted">
+                        {category.productCount} products
+                      </span>
+                      <span className="text-brand text-sm font-semibold">
+                        Browse →
+                      </span>
+                    </div>
+                  </GlowCard>
+                </a>
               </motion.div>
             ))}
           </div>
@@ -169,37 +170,38 @@ export default function CategoriesPage() {
                 onMouseEnter={() => setHoveredCategory(category.id)}
                 onMouseLeave={() => setHoveredCategory(null)}
               >
-                <GlowCard 
-                  className={`p-6 cursor-pointer transition-all ${
-                    hoveredCategory === category.id ? "shadow-neon" : ""
-                  }`}
-                  onClick={() => navigateToProducts(category.id)}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="text-4xl">{category.icon}</div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-extrabold tracking-tight text-text">
-                        {category.name}
-                      </h3>
-                      <p className="text-xs text-muted mt-1">
-                        {category.productCount} products
-                      </p>
-                    </div>
-                    <svg 
-                      className="h-5 w-5 text-brand" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        strokeWidth={2} 
-                        d="M9 5l7 7-7 7" 
-                      />
+                <a href={`/shop/products?category=${category.id}`}>
+                  <GlowCard 
+                    className={`p-6 cursor-pointer transition-all ${
+                      hoveredCategory === category.id ? "shadow-neon" : ""
+                    }`}
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="text-4xl">{category.icon}</div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-extrabold tracking-tight text-text">
+                          {category.name}
+                        </h3>
+                        <p className="text-xs text-muted mt-1">
+                          {category.productCount} products
+                        </p>
+                      </div>
+                      <svg 
+                        className="h-5 w-5 text-brand" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke="currentColor"
+                      >
+                        <path 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          strokeWidth={2} 
+                          d="M9 5l7 7-7 7" 
+                        />
                     </svg>
                   </div>
                 </GlowCard>
+              </a>
               </motion.div>
             ))}
           </div>

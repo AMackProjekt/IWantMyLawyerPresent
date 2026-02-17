@@ -21,14 +21,12 @@ export function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative"
+            className="relative text-center"
           >
-            <div className="absolute inset-0 blur-2xl bg-brand/30 animate-pulse" />
-            <img
-              src="/partnerships/amp-logo.jpeg"
-              alt="A MackProjekt"
-              className="relative h-16 w-auto object-contain"
-            />
+            <div className="text-5xl mb-3">⚖️</div>
+            <div className="text-xl font-extrabold tracking-tight text-text">
+              I Want My Lawyer Present
+            </div>
           </motion.div>
 
           {/* Neon text with electric effect */}
@@ -41,18 +39,8 @@ export function Footer() {
           >
             <div className="text-center">
               <div className="relative inline-block">
-                {/* Multiple glowing text layers for cyberpunk effect */}
-                <span className="absolute inset-0 text-xl md:text-2xl font-extrabold tracking-wider blur-sm text-brand animate-pulse">
-                  POWERED BY<br />A MACKPROJEKT
-                </span>
-                <span className="absolute inset-0 text-xl md:text-2xl font-extrabold tracking-wider blur-md text-brand2 animate-pulse animation-delay-300">
-                  POWERED BY<br />A MACKPROJEKT
-                </span>
-                <span className="absolute inset-0 text-xl md:text-2xl font-extrabold tracking-wider blur-lg text-accent animate-pulse animation-delay-600">
-                  POWERED BY<br />A MACKPROJEKT
-                </span>
-                <span className="relative text-xl md:text-2xl font-extrabold tracking-wider bg-gradient-to-r from-brand via-brand2 to-accent bg-clip-text text-transparent animate-flicker">
-                  POWERED BY<br />A MACKPROJEKT
+                <span className="relative text-sm text-muted">
+                  Know Your Rights • Protect Your Freedom
                 </span>
               </div>
             </div>
@@ -86,7 +74,7 @@ export function Footer() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xs text-muted/60 text-center font-mono"
           >
-            © {new Date().getFullYear()} MackEnterprises™. All rights reserved.
+            © {new Date().getFullYear()} I Want My Lawyer Present. All rights reserved.
           </motion.p>
         </div>
       </div>
