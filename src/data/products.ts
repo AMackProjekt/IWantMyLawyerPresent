@@ -2,36 +2,6 @@ import type { Product } from '../types/product';
 
 export const products: Product[] = [
   {
-    id: 'prod-001',
-    name: 'Know Your Rights Guide',
-    description: 'Comprehensive guide to understanding your constitutional rights during police encounters. Essential reading for everyone.',
-    price: 19.99,
-    image: '/images/rights-guide.jpg',
-    category: 'books',
-    inStock: true,
-    featured: false,
-  },
-  {
-    id: 'prod-002',
-    name: 'Legal Defense Consultation',
-    description: 'One-hour consultation with experienced legal professionals. Get expert advice on your rights and legal strategy.',
-    price: 149.99,
-    image: '/images/consultation.jpg',
-    category: 'consulting',
-    inStock: true,
-    featured: false,
-  },
-  {
-    id: 'prod-003',
-    name: 'Freedom After Incarceration Course',
-    description: 'Complete online course covering reentry challenges, legal rights restoration, and building a successful life after incarceration.',
-    price: 99.99,
-    image: '/images/course.jpg',
-    category: 'courses',
-    inStock: true,
-    featured: false,
-  },
-  {
     id: 'prod-004',
     name: 'Tshirts',
     description: 'Premium cotton t-shirts with justice-forward messaging. Available in multiple sizes and colors.',

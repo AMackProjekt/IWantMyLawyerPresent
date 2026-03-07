@@ -22,12 +22,15 @@ export default function FounderBio() {
               className="relative"
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <div className="aspect-[3/4] bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center">
-                  <Users className="w-32 h-32 text-white/30" />
-                </div>
+                <img
+                  src="/images/Founders%20Picture.JPG"
+                  alt="Brian Mason"
+                  className="aspect-[3/4] w-full object-cover"
+                  loading="lazy"
+                />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                   <h3 className="text-2xl font-bold text-white mb-1">
-                    [Founder Name]
+                    Brian Mason
                   </h3>
                   <p className="text-blue-200">
                     Founder & Legal Rights Advocate
@@ -56,7 +59,7 @@ export default function FounderBio() {
 
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  After serving over 20 years of incarceration, [Founder Name]
+                  After serving over 20 years of incarceration, Brian Mason
                   emerged with an unshakeable commitment to ensuring others
                   never face the injustices that marked their journey through
                   the criminal justice system.
@@ -70,7 +73,7 @@ export default function FounderBio() {
                 </p>
 
                 <p>
-                  Today, [Founder Name] channels that experience into empowering
+                  Today, Brian Mason channels that experience into empowering
                   individuals with the knowledge and resources they need to
                   protect their rights during police encounters. Through this
                   platform, they're building a movement to prevent others from
