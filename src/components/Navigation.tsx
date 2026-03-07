@@ -12,6 +12,7 @@ export default function Navigation() {
     { label: 'Statistics', href: '#statistics' },
     { label: 'Know Your Rights', href: '#rights' },
     { label: 'Shop', href: '#shop' },
+    { label: 'Support', href: '#support' },
     { label: 'Contact', href: '#contact' },
   ];
 
