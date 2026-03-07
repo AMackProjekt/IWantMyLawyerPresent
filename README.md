@@ -16,6 +16,7 @@ This website educates visitors about the importance of legal representation duri
 ### Landing Page Sections
 
 - **Hero Section**: Eye-catching headline with animated background and call-to-action buttons
+- **Founder Bio**: Personal journey from 20+ years incarceration to legal advocacy
 - **Interactive Statistics Dashboard**: Real-time animated counters showing key metrics
 - **Geographic Filtering**: View data by San Diego, California, or United States
 - **Data Visualizations**: 
@@ -24,8 +25,19 @@ This website educates visitors about the importance of legal representation duri
   - Line charts showing trends over time
 - **Why It Matters**: Educational content about constitutional rights
 - **Before/After Comparison**: Impact of legal representation
+- **E-commerce Shop**: Product catalog with legal resources and services
+- **Shopping Cart**: Real-time cart management with checkout flow
+- **Secure Checkout**: Multiple payment methods (Credit/Debit, PayPal)
 - **Call-to-Action**: Contact form and resource links
-- **Responsive Navigation**: Mobile-friendly hamburger menu
+- **Responsive Navigation**: Mobile-friendly hamburger menu with cart
+
+### E-commerce Features
+
+- **Product Catalog**: Books, courses, consulting, merchandise
+- **Shopping Cart**: Real-time updates, quantity management
+- **Secure Payments**: Credit/Debit cards via Stripe, PayPal integration
+- **Order Processing**: Complete checkout with confirmation
+- **Media Management**: Folders for images, videos, documents
 
 ### Technical Features
 
@@ -80,15 +92,52 @@ npm run dev
 - `npm run preview` - Preview production build locally
 - `npm run lint` - Run ESLint for code quality checks
 
+## 🛒 E-commerce Setup
+
+### Quick Start
+1. **Add Products**: Edit `src/data/products.ts`
+2. **Add Images**: Place product photos in `/public/images/`
+3. **Update Bio**: Edit `src/components/FounderBio.tsx` - replace `[Founder Name]` placeholder
+4. **Configure Payments**: Copy `.env.example` to `.env` and add API keys
+
+### Payment Integration
+
+#### Stripe (Credit/Debit Cards)
+```bash
+npm install @stripe/stripe-js @stripe/react-stripe-js
+```
+Add to `.env`:
+```
+VITE_STRIPE_PUBLIC_KEY=pk_test_...
+```
+
+#### PayPal
+```bash
+npm install @paypal/react-paypal-js
+```
+Add to `.env`:
+```
+VITE_PAYPAL_CLIENT_ID=...
+```
+
+**📖 See [ECOMMERCE_GUIDE.md](./ECOMMERCE_GUIDE.md) for detailed setup instructions.**
+
 ## 📁 Project Structure
 
 ```
 /
 ├── public/              # Static assets
+│   ├── images/         # Product photos, logos (NEW)
+│   ├── videos/         # MP4 video files (NEW)
+│   └── media/          # Documents, audio files (NEW)
 ├── src/
 │   ├── components/      # React components
 │   │   ├── Hero.tsx
 │   │   ├── Navigation.tsx
+│   │   ├── FounderBio.tsx         # (NEW) Founder story
+│   │   ├── Shop.tsx               # (NEW) Product catalog
+│   │   ├── CartDrawer.tsx         # (NEW) Shopping cart
+│   │   ├── Checkout.tsx           # (NEW) Checkout page
 │   │   ├── StatsCounter.tsx
 │   │   ├── DataVisualization.tsx
 │   │   ├── GeographicFilter.tsx
@@ -97,17 +146,22 @@ npm run dev
 │   │   ├── CallToAction.tsx
 │   │   └── Footer.tsx
 │   ├── data/
-│   │   └── statistics.ts   # Mock data structure
+│   │   ├── statistics.ts
+│   │   └── products.ts            # (NEW) Product catalog
 │   ├── types/
-│   │   └── index.ts        # TypeScript type definitions
-│   ├── App.tsx             # Main application component
-│   ├── main.tsx            # Application entry point
-│   └── index.css           # Global styles with Tailwind
-├── index.html              # HTML entry point
-├── package.json            # Dependencies and scripts
-├── tailwind.config.js      # Tailwind configuration
-├── tsconfig.json           # TypeScript configuration
-└── vite.config.ts          # Vite configuration
+│   │   ├── index.ts
+│   │   └── product.ts             # (NEW) E-commerce types
+│   ├── CartContext.tsx            # (NEW) Shopping cart state
+│   ├── App.tsx                    # Main application component
+│   ├── main.tsx                   # Application entry point
+│   └── index.css                  # Global styles with Tailwind
+├── .env.example                   # (NEW) Payment API keys template
+├── ECOMMERCE_GUIDE.md             # (NEW) E-commerce setup guide
+├── index.html                     # HTML entry point
+├── package.json                   # Dependencies and scripts
+├── tailwind.config.js             # Tailwind configuration
+├── tsconfig.json                  # TypeScript configuration
+└── vite.config.ts                 # Vite configuration
 ```
 
 ## 📊 Data Structure

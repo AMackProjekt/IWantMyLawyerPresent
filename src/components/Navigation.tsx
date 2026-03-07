@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Scale, Menu, X } from 'lucide-react';
+import CartDrawer from './CartDrawer';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
     { label: 'Home', href: '#' },
+    { label: 'About', href: '#about' },
     { label: 'Statistics', href: '#statistics' },
     { label: 'Know Your Rights', href: '#rights' },
-    { label: 'Resources', href: '#resources' },
+    { label: 'Shop', href: '#shop' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -36,6 +38,7 @@ export default function Navigation() {
                 {item.label}
               </a>
             ))}
+            <CartDrawer />
             <button className="px-6 py-2 bg-yellow-400 text-primary-900 font-semibold rounded-lg hover:bg-yellow-300 transition-all">
               Get Help Now
             </button>
@@ -74,9 +77,12 @@ export default function Navigation() {
                     {item.label}
                   </a>
                 ))}
-                <button className="px-6 py-3 bg-yellow-400 text-primary-900 font-semibold rounded-lg hover:bg-yellow-300 transition-all w-full">
-                  Get Help Now
-                </button>
+                <div className="flex items-center justify-between">
+                  <button className="px-6 py-3 bg-yellow-400 text-primary-900 font-semibold rounded-lg hover:bg-yellow-300 transition-all flex-1 mr-2">
+                    Get Help Now
+                  </button>
+                  <CartDrawer />
+                </div>
               </div>
             </div>
           </motion.div>
