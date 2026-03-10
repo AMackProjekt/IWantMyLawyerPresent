@@ -167,11 +167,11 @@ export default function MediaKitPage() {
 
                   <div className="glass rounded-xl p-6 text-center">
                     <div className="bg-white rounded-lg p-4 mb-3">
-                      <img src="/logos/tools-logo.jpeg" alt="T.O.O.L.S. Logo" className="w-full h-auto" />
+                      <img src="/logos/main-logo.png" alt="T.O.O.L.S. Logo" className="w-full h-auto" />
                     </div>
                     <p className="text-sm text-muted">T.O.O.L.S. Inc.</p>
                     <a 
-                      href="/logos/tools-logo.jpeg" 
+                      href="/logos/main-logo.png" 
                       download 
                       className="inline-block mt-2 px-4 py-2 text-xs text-muted hover:text-brand transition-colors border border-border rounded-lg hover:border-brand/50"
                     >

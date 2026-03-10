@@ -41,6 +41,59 @@ export default function Page() {
         </div>
       </section>
 
+      <ElectricDivider className="mx-auto max-w-container px-7" color="gold" />
+
+      {/* FOUNDER PROFILE */}
+      <section className="mx-auto max-w-container px-7 py-20">
+        <SectionHeading
+          eyebrow="Founder Profile"
+          title={'Meet Donyale "DThree" Mack'}
+          subtitle="A mission-driven founder building products that protect rights, expand access, and create real opportunity."
+        />
+
+        <div className="mt-10">
+          <GlowCard className="p-8 lg:p-10">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+              <div className="lg:col-span-1">
+                <div className="flex aspect-square items-center justify-center rounded-2xl bg-gradient-to-br from-brand/20 to-brand2/20 border border-brand/25">
+                  <div className="text-center">
+                    <div className="text-5xl font-extrabold tracking-tight text-brand">DM</div>
+                    <p className="mt-2 text-xs uppercase tracking-[0.18em] text-muted">Founder</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-5 text-text/90 lg:col-span-2">
+                <div>
+                  <h3 className="text-2xl font-extrabold tracking-tight text-text">Donyale &quot;DThree&quot; Mack</h3>
+                  <p className="text-brand2 font-semibold">Founder and CEO, MackEnterprises</p>
+                  <p className="text-sm text-muted">Chief Innovation Officer, A MackProjekt</p>
+                </div>
+
+                <p className="leading-relaxed">
+                  Donyale Mack is an entrepreneur and technologist focused on using AI, data, and product design to solve
+                  practical problems for people who are too often left out of traditional systems. The work behind I Want My
+                  Lawyer Present is rooted in lived experience, civic responsibility, and a commitment to constitutional rights.
+                </p>
+
+                <p className="leading-relaxed">
+                  Through MackEnterprises and A MackProjekt, Donyale builds high-impact platforms that combine public
+                  education, community support, and accessible digital tools. The mission is simple: build products that work,
+                  inform, and create measurable social impact.
+                </p>
+
+                <div className="rounded-xl border border-border bg-glass p-4">
+                  <p className="text-sm italic text-brand2">
+                    &quot;Innovation happens when technology meets purpose. We are not building ideas for attention, we are
+                    building products for real people.&quot;
+                  </p>
+                </div>
+              </div>
+            </div>
+          </GlowCard>
+        </div>
+      </section>
+
       {/* FEATURED PRODUCTS */}
       <section id="products" className="mx-auto max-w-container px-7 pt-8 pb-20">
         <SectionHeading
