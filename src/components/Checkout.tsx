@@ -6,6 +6,9 @@ import {
   CheckCircle,
   AlertCircle,
   ShoppingBag,
+  Download,
+  Smartphone,
+  Wallet,
 } from 'lucide-react';
 import { useCart } from '../useCart';
 
@@ -14,6 +17,7 @@ export default function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState<'card' | 'paypal'>('card');
   const [processing, setProcessing] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [purchasedItemIds, setPurchasedItemIds] = useState<string[]>([]);
 
   const [formData, setFormData] = useState({
     email: '',
@@ -42,10 +46,13 @@ export default function Checkout() {
     // Simulate payment processing
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
+    setPurchasedItemIds(items.map((item) => item.product.id));
     setProcessing(false);
     setSuccess(true);
     clearCart();
   };
+
+  const includesWalletCard = purchasedItemIds.includes('prod-005');
 
   if (success) {
     return (
@@ -66,6 +73,31 @@ export default function Checkout() {
               Thank you for your purchase. You'll receive a confirmation email
               shortly.
             </p>
+
+            {includesWalletCard && (
+              <div className="text-left bg-primary-50 border border-primary-200 rounded-xl p-5 mb-8">
+                <h3 className="text-lg font-bold text-primary-900 mb-3">
+                  Download + Add to Wallet
+                </h3>
+                <ol className="space-y-3 text-sm text-primary-900">
+                  <li className="flex items-start gap-2">
+                    <Download className="w-4 h-4 mt-0.5" />
+                    Download your digital wallet card file from the confirmation
+                    email link.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Smartphone className="w-4 h-4 mt-0.5" />
+                    Open the file on your phone and choose Add to Wallet.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Wallet className="w-4 h-4 mt-0.5" />
+                    Save to Apple Wallet, Google Wallet, or Samsung Wallet for
+                    quick access.
+                  </li>
+                </ol>
+              </div>
+            )}
+
             <a
               href="#"
               className="inline-block px-8 py-4 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-all"

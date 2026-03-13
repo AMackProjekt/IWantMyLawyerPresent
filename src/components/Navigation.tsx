@@ -1,18 +1,37 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Scale, Menu, X } from 'lucide-react';
+import { Scale, Menu, X, Sun, Moon } from 'lucide-react';
 import CartDrawer from './CartDrawer';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme === 'dark' || (!savedTheme && prefersDark)
+      ? 'dark'
+      : 'light';
+
+    setTheme(initialTheme);
+    document.documentElement.classList.toggle('dark', initialTheme === 'dark');
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
+    localStorage.setItem('theme', nextTheme);
+    document.documentElement.classList.toggle('dark', nextTheme === 'dark');
+  };
 
   const navItems = [
     { label: 'Home', href: '#' },
+    { label: 'Shop', href: '#shop' },
+    { label: 'Support', href: '#support' },
     { label: 'About', href: '#about' },
     { label: 'Statistics', href: '#statistics' },
     { label: 'Know Your Rights', href: '#rights' },
-    { label: 'Shop', href: '#shop' },
-    { label: 'Support', href: '#support' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -39,10 +58,24 @@ export default function Navigation() {
                 {item.label}
               </a>
             ))}
-            <CartDrawer />
-            <button className="px-6 py-2 bg-yellow-400 text-primary-900 font-semibold rounded-lg hover:bg-yellow-300 transition-all">
-              Get Help Now
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              className="text-white hover:text-yellow-400 transition-colors"
+            >
+              {theme === 'light' ? (
+                <Moon className="w-5 h-5" />
+              ) : (
+                <Sun className="w-5 h-5" />
+              )}
             </button>
+            <CartDrawer />
+            <a
+              href="#shop"
+              className="px-6 py-2 bg-yellow-400 text-primary-900 font-semibold rounded-lg hover:bg-yellow-300 transition-all"
+            >
+              Shop Now
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -79,8 +112,23 @@ export default function Navigation() {
                   </a>
                 ))}
                 <div className="flex items-center justify-between">
-                  <button className="px-6 py-3 bg-yellow-400 text-primary-900 font-semibold rounded-lg hover:bg-yellow-300 transition-all flex-1 mr-2">
-                    Get Help Now
+                  <a
+                    href="#shop"
+                    onClick={() => setIsOpen(false)}
+                    className="px-6 py-3 bg-yellow-400 text-primary-900 font-semibold rounded-lg hover:bg-yellow-300 transition-all flex-1 mr-2 text-center"
+                  >
+                    Shop Now
+                  </a>
+                  <button
+                    onClick={toggleTheme}
+                    aria-label="Toggle theme"
+                    className="p-3 rounded-lg border border-primary-700 text-white hover:text-yellow-400 transition-colors mr-2"
+                  >
+                    {theme === 'light' ? (
+                      <Moon className="w-5 h-5" />
+                    ) : (
+                      <Sun className="w-5 h-5" />
+                    )}
                   </button>
                   <CartDrawer />
                 </div>

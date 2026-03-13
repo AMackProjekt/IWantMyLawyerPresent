@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { HandHeart, Shirt, Megaphone, Users } from 'lucide-react';
 
 const movementImages = [
-  '/images/IMG_5698.JPG',
   '/images/IMG_5699.JPG',
   '/images/IMG_5701 (1).JPG',
   '/images/IMG_5702.JPG',
@@ -16,9 +15,9 @@ const movementImages = [
 
 const supportWays = [
   {
-    title: 'Wear The Message',
+    title: 'Protect Yourself',
     description:
-      'T-shirts and hoodies help fund rights education while keeping visibility high in the community.',
+      'Show up for justice with products that keep legal awareness visible and actionable.',
     icon: Shirt,
     href: '#shop',
     cta: 'Shop Apparel',
@@ -56,13 +55,6 @@ export default function SupportMovement() {
             <HandHeart className="w-5 h-5" />
             Support The Movement
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            Stand With Justice In Action
-          </h2>
-          <p className="text-lg sm:text-xl text-primary-100 max-w-3xl mx-auto">
-            Every order, share, and sponsorship helps expand legal education and
-            protect communities from preventable injustice.
-          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6 mb-12">

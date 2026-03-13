@@ -1,6 +1,7 @@
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import FounderBio from './components/FounderBio';
+import LegalRightsWalletCard from './components/LegalRightsWalletCard';
 import ImpactSection from './components/ImpactSection';
 import DataVisualization from './components/DataVisualization';
 import WhyItMatters from './components/WhyItMatters';
@@ -18,11 +19,12 @@ function App() {
         <Navigation />
         <Hero />
         <FounderBio />
+        <LegalRightsWalletCard />
+        <Shop />
+        <SupportMovement />
         <ImpactSection />
         <DataVisualization />
         <WhyItMatters />
-        <Shop />
-        <SupportMovement />
         <Checkout />
         <CallToAction />
         <Footer />

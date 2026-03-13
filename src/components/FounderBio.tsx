@@ -23,7 +23,7 @@ export default function FounderBio() {
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/images/Founders%20Picture.JPG"
+                  src="/images/FoundersProfile.JPG"
                   alt="Brian Mason"
                   className="aspect-[3/4] w-full object-cover"
                   loading="lazy"
@@ -32,9 +32,7 @@ export default function FounderBio() {
                   <h3 className="text-2xl font-bold text-white mb-1">
                     Brian Mason
                   </h3>
-                  <p className="text-blue-200">
-                    Founder & Legal Rights Advocate
-                  </p>
+                  <p className="text-blue-200">Founder/Author/Advocate</p>
                 </div>
               </div>
             </motion.div>
@@ -59,30 +57,43 @@ export default function FounderBio() {
 
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  After serving over 20 years of incarceration, Brian Mason
-                  emerged with an unshakeable commitment to ensuring others
-                  never face the injustices that marked their journey through
-                  the criminal justice system.
+                  Brian Mason's life is a testament to resilience,
+                  accountability, and the relentless pursuit of justice. After
+                  serving more than 20 years of incarceration, he emerged with a
+                  renewed purpose: to ensure that others never endure the same
+                  systemic failures that once defined his experience within the
+                  criminal justice system.
                 </p>
 
                 <p>
-                  Their firsthand experience revealed critical gaps in legal
-                  representation and awareness of constitutional rights—gaps
-                  that too often lead to wrongful convictions and decades of
-                  lost freedom.
+                  Through that journey, he witnessed firsthand the devastating
+                  consequences of inadequate legal representation and a
+                  widespread lack of awareness surrounding constitutional
+                  rights-gaps that continue to contribute to wrongful
+                  convictions and decades of lost freedom.
                 </p>
 
                 <p>
-                  Today, Brian Mason channels that experience into empowering
-                  individuals with the knowledge and resources they need to
-                  protect their rights during police encounters. Through this
-                  platform, they're building a movement to prevent others from
-                  enduring similar hardships.
+                  Today, Brian Mason has transformed that hard-earned
+                  experience into a mission. He dedicates his work to educating
+                  individuals about their constitutional protections and
+                  equipping them with the knowledge and confidence needed to
+                  safeguard their rights during police encounters. His voice now
+                  serves as both a warning and a guide-turning lived experience
+                  into a powerful platform for prevention, empowerment, and
+                  reform.
+                </p>
+
+                <p>
+                  Through this movement, he is not only reclaiming his
+                  narrative but helping others protect their freedom before it
+                  is taken from them.
                 </p>
 
                 <p className="font-semibold text-primary-700">
-                  "Knowledge of your rights isn't just power—it's protection.
-                  It's the difference between freedom and a lifetime of regret."
+                  "Knowledge of your rights isn't just power-it's protection.
+                  It can be the difference between walking free and losing a
+                  lifetime."
                 </p>
               </div>
 
@@ -130,6 +141,22 @@ export default function FounderBio() {
                     Community
                   </span>
                 </div>
+              </div>
+
+              <div
+                id="book-launch"
+                className="mt-8 rounded-xl border-2 border-dashed border-primary-300 bg-primary-50 p-5"
+              >
+                <p className="text-xs font-mono text-primary-700 mb-2">
+                  namespace: founders-book-launch
+                </p>
+                <h3 className="text-xl font-bold text-primary-900 mb-1">
+                  Founder Book Launch Placeholder
+                </h3>
+                <p className="text-primary-700">
+                  Upcoming release details, pre-order link, launch date, and
+                  media kit will be published here.
+                </p>
               </div>
             </motion.div>
           </div>

@@ -13,6 +13,7 @@ export default function Shop() {
   };
 
   const featuredProducts = products.filter((p) => p.featured);
+  const allProducts = products.filter((p) => !p.featured);
 
   return (
     <section id="shop" className="py-20 bg-white">
@@ -25,12 +26,8 @@ export default function Shop() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            Resources & Services
+            Official Storefront
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Empower yourself with knowledge, guidance, and tools to protect your
-            rights and build a better future.
-          </p>
         </motion.div>
 
         {/* Featured Products */}
@@ -56,7 +53,7 @@ export default function Shop() {
             All Products
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product, index) => (
+            {allProducts.map((product, index) => (
               <ProductCard
                 key={product.id}
                 product={product}
@@ -79,6 +76,7 @@ interface ProductCardProps {
 
 function ProductCard({ product, onAddToCart, delay }: ProductCardProps) {
   const [imageError, setImageError] = useState(false);
+  const isProtectedPreview = product.id === 'prod-005';
 
   return (
     <motion.div
@@ -94,9 +92,12 @@ function ProductCard({ product, onAddToCart, delay }: ProductCardProps) {
           <img
             src={product.image}
             alt={product.name}
-            className="h-full w-full object-cover"
+            className={`h-full w-full object-cover ${
+              isProtectedPreview ? 'blur-sm scale-105 select-none pointer-events-none' : ''
+            }`}
             loading="lazy"
             onError={() => setImageError(true)}
+            draggable={false}
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
@@ -106,6 +107,13 @@ function ProductCard({ product, onAddToCart, delay }: ProductCardProps) {
         {product.featured && (
           <div className="absolute top-2 right-2 bg-yellow-400 text-primary-900 px-3 py-1 rounded-full text-xs font-bold">
             Featured
+          </div>
+        )}
+        {isProtectedPreview && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+            <span className="px-3 py-1 rounded-full bg-black/60 text-white text-xs font-semibold tracking-wide">
+              Preview Only
+            </span>
           </div>
         )}
         {!product.inStock && (
@@ -124,6 +132,11 @@ function ProductCard({ product, onAddToCart, delay }: ProductCardProps) {
           <p className="text-sm text-gray-500 uppercase tracking-wide">
             {product.category}
           </p>
+          {product.id === 'prod-005' && (
+            <p className="text-xs font-semibold text-primary-700 mt-1">
+              Digital Download • Wallet App Ready
+            </p>
+          )}
         </div>
 
         <p className="text-gray-600 line-clamp-2">{product.description}</p>

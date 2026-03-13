@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import { Scale, Shield } from 'lucide-react';
 
 export default function Hero() {
-  const scrollToStats = () => {
-    const statsSection = document.getElementById('statistics');
-    statsSection?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    section?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -42,19 +42,21 @@ export default function Hero() {
             </h1>
 
             <p className="text-xl sm:text-2xl text-blue-100 mb-8 leading-relaxed">
-              Thousands of wrongful convictions could have been prevented with
-              proper legal representation during police encounters.
+              Shop Apparel
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <button
-                onClick={scrollToStats}
+                onClick={() => scrollToSection('shop')}
                 className="px-8 py-4 bg-yellow-400 text-primary-900 font-semibold rounded-lg text-lg hover:bg-yellow-300 transform hover:scale-105 transition-all shadow-lg"
               >
-                See The Data
+                Shop The Storefront
               </button>
-              <button className="px-8 py-4 bg-white/10 backdrop-blur text-white font-semibold rounded-lg text-lg hover:bg-white/20 transform hover:scale-105 transition-all border-2 border-white/30">
-                Learn Your Rights
+              <button
+                onClick={() => scrollToSection('support')}
+                className="px-8 py-4 bg-white/10 backdrop-blur text-white font-semibold rounded-lg text-lg hover:bg-white/20 transform hover:scale-105 transition-all border-2 border-white/30"
+              >
+                Support The Movement
               </button>
             </div>
           </motion.div>
@@ -103,7 +105,7 @@ export default function Hero() {
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
           className="text-white/60 flex flex-col items-center cursor-pointer"
-          onClick={scrollToStats}
+          onClick={() => scrollToSection('shop')}
         >
           <span className="text-sm mb-2">Scroll to explore</span>
           <svg

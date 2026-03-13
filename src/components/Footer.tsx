@@ -122,11 +122,25 @@ export default function Footer() {
             <p className="text-gray-400 text-sm">
               © {currentYear} I Want My Lawyer Present. All rights reserved.
             </p>
-            <p className="text-gray-500 text-xs max-w-2xl text-center md:text-right">
-              Disclaimer: This website provides general information only and does
-              not constitute legal advice. For specific legal advice, please
-              consult with a qualified attorney.
-            </p>
+            <div className="flex flex-col items-center md:items-end gap-2">
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 text-gray-500 hover:text-gray-300 transition-colors"
+                aria-label="Powered by A MackProjekt"
+              >
+                <span className="w-5 h-5 rounded border border-gray-600 text-gray-400 text-[9px] font-bold grid place-items-center leading-none">
+                  AM
+                </span>
+                <span className="text-[11px] tracking-wide uppercase">
+                  AMP <span className="normal-case">Powered by A MackProjekt</span>
+                </span>
+              </a>
+              <p className="text-gray-500 text-xs max-w-2xl text-center md:text-right">
+                Disclaimer: This website provides general information only and does
+                not constitute legal advice. For specific legal advice, please
+                consult with a qualified attorney.
+              </p>
+            </div>
           </div>
         </div>
       </div>
