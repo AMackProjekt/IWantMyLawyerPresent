@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+
+@import "tailwindcss";
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background: #0b1220;
+  color: #e5e7eb;
+}
+
+.section-container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .section-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.gradient-bg {
+  background: linear-gradient(to bottom right, #1e3a8a, #1e40af, #1d4ed8);
+}
+
+html.dark .gradient-bg {
+  background: linear-gradient(to bottom right, #0f172a, #111827, #1f2937);
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.3s;
+}
+
+html.dark .card {
+  background-color: #111827;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.45);
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+html.dark #shop,
+html.dark #about,
+html.dark #wallet-card,
+html.dark #checkout {
+  background-color: #0f172a !important;
+}
+
+html.dark #support {
+  background-color: #030712 !important;
+}
+
+html.dark #shop h2,
+html.dark #shop h3,
+html.dark #shop h4,
+html.dark #about h2,
+html.dark #about h3,
+html.dark #wallet-card h2,
+html.dark #wallet-card h3,
+html.dark #checkout h1,
+html.dark #checkout h2 {
+  color: #f8fafc !important;
+}
+
+html.dark #shop p,
+html.dark #about p,
+html.dark #wallet-card p,
+html.dark #checkout p,
+html.dark #shop span,
+html.dark #about span,
+html.dark #wallet-card span,
+html.dark #checkout span {
+  color: #cbd5e1;
+}
