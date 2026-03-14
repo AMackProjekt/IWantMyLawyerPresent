@@ -28,10 +28,10 @@ export default function Navigation() {
   const navItems = [
     { label: 'Home', href: '#' },
     { label: 'Shop', href: '#shop' },
-    { label: 'Support', href: '#support' },
+    { label: 'Video Clips', href: '#video-clips' },
+    { label: 'Gallery', href: '#support' },
+    { label: 'Checkout', href: '#checkout' },
     { label: 'About', href: '#about' },
-    { label: 'Statistics', href: '#statistics' },
-    { label: 'Know Your Rights', href: '#rights' },
     { label: 'Contact', href: '#contact' },
   ];
 

@@ -32,7 +32,7 @@ export default function FounderBio() {
                   <h3 className="text-2xl font-bold text-white mb-1">
                     Brian Mason
                   </h3>
-                  <p className="text-blue-200">Founder/Author/Advocate</p>
+                  <p className="text-blue-200">Founder / Creative Director</p>
                 </div>
               </div>
             </motion.div>
@@ -47,53 +47,36 @@ export default function FounderBio() {
               <div className="flex items-center gap-3 mb-4">
                 <Award className="w-8 h-8 text-yellow-500" />
                 <span className="text-primary-600 font-semibold text-lg">
-                  From Adversity to Advocacy
+                  Brand Story
                 </span>
               </div>
 
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                A Journey of Resilience & Justice
+                Built To Be Worn. Built To Be Seen.
               </h2>
 
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  Brian Mason's life is a testament to resilience,
-                  accountability, and the relentless pursuit of justice. After
-                  serving more than 20 years of incarceration, he emerged with a
-                  renewed purpose: to ensure that others never endure the same
-                  systemic failures that once defined his experience within the
-                  criminal justice system.
+                  I Want My Lawyer Present is a statement brand built around
+                  bold design, conversation-starting apparel, and quality-first
+                  drops that represent confidence and identity.
                 </p>
 
                 <p>
-                  Through that journey, he witnessed firsthand the devastating
-                  consequences of inadequate legal representation and a
-                  widespread lack of awareness surrounding constitutional
-                  rights-gaps that continue to contribute to wrongful
-                  convictions and decades of lost freedom.
+                  Brian Mason leads the creative direction, product curation,
+                  and launch strategy behind each release, keeping every piece
+                  clean, wearable, and instantly recognizable.
                 </p>
 
                 <p>
-                  Today, Brian Mason has transformed that hard-earned
-                  experience into a mission. He dedicates his work to educating
-                  individuals about their constitutional protections and
-                  equipping them with the knowledge and confidence needed to
-                  safeguard their rights during police encounters. His voice now
-                  serves as both a warning and a guide-turning lived experience
-                  into a powerful platform for prevention, empowerment, and
-                  reform.
-                </p>
-
-                <p>
-                  Through this movement, he is not only reclaiming his
-                  narrative but helping others protect their freedom before it
-                  is taken from them.
+                  From signature tees to digital wallet products, the storefront
+                  is designed to make checkout easy while giving customers a
+                  premium experience from first click to delivery.
                 </p>
 
                 <p className="font-semibold text-primary-700">
-                  "Knowledge of your rights isn't just power-it's protection.
-                  It can be the difference between walking free and losing a
-                  lifetime."
+                  "The goal is simple: release products people actually want to
+                  wear, and make every launch feel like an event."
                 </p>
               </div>
 
@@ -101,23 +84,21 @@ export default function FounderBio() {
               <div className="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-gray-200">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary-600 mb-1">
-                    20+
+                    30+
                   </div>
-                  <div className="text-sm text-gray-600">
-                    Years Experience
-                  </div>
+                  <div className="text-sm text-gray-600">Product Variants</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary-600 mb-1">
-                    1000+
+                    4+
                   </div>
-                  <div className="text-sm text-gray-600">Lives Impacted</div>
+                  <div className="text-sm text-gray-600">Payment Options</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary-600 mb-1">
                     100%
                   </div>
-                  <div className="text-sm text-gray-600">Dedicated</div>
+                  <div className="text-sm text-gray-600">Authentic Brand</div>
                 </div>
               </div>
 
@@ -126,19 +107,19 @@ export default function FounderBio() {
                 <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm">
                   <BookOpen className="w-5 h-5 text-primary-600" />
                   <span className="text-sm font-medium text-gray-700">
-                    Education
+                    Product Drops
                   </span>
                 </div>
                 <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm">
                   <Heart className="w-5 h-5 text-red-500" />
                   <span className="text-sm font-medium text-gray-700">
-                    Advocacy
+                    Customer Love
                   </span>
                 </div>
                 <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm">
                   <Users className="w-5 h-5 text-blue-600" />
                   <span className="text-sm font-medium text-gray-700">
-                    Community
+                    Brand Community
                   </span>
                 </div>
               </div>

@@ -2,41 +2,38 @@ import { motion } from 'framer-motion';
 import { HandHeart, Shirt, Megaphone, Users } from 'lucide-react';
 
 const movementImages = [
+  '/images/Bold-Cover.JPG',
+  '/images/Book-Cover.JPG',
   '/images/IMG_5699.JPG',
   '/images/IMG_5701 (1).JPG',
-  '/images/IMG_5702.JPG',
-  '/images/IMG_5703.JPG',
-  '/images/IMG_5707.JPG',
-  '/images/IMG_5708.jpg',
-  '/images/IMG_5709.JPG',
   '/images/TShirt2.JPG',
-  '/images/TShirt3.JPG',
+  '/images/Womens-Tees.JPG',
 ];
 
 const supportWays = [
   {
-    title: 'Protect Yourself',
+    title: 'Shop New Releases',
     description:
-      'Show up for justice with products that keep legal awareness visible and actionable.',
+      'Browse featured apparel and accessories from the latest storefront drops.',
     icon: Shirt,
     href: '#shop',
-    cta: 'Shop Apparel',
+    cta: 'Shop Now',
   },
   {
-    title: 'Sponsor Outreach',
+    title: 'Watch Brand Clips',
     description:
-      'Support events, materials, and workshops that teach people how to protect their rights.',
+      'See quick videos of product details, fit previews, and launch highlights.',
     icon: Megaphone,
-    href: '#contact',
-    cta: 'Sponsor A Program',
+    href: '#video-clips',
+    cta: 'Watch Clips',
   },
   {
     title: 'Join The Community',
     description:
-      'Become part of a network advocating for legal awareness, justice reform, and second chances.',
+      'Follow the brand, tag your looks, and get updates for upcoming product launches.',
     icon: Users,
     href: '#contact',
-    cta: 'Get Involved',
+    cta: 'Connect With Us',
   },
 ];
 
@@ -53,7 +50,7 @@ export default function SupportMovement() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-yellow-300 font-semibold mb-5">
             <HandHeart className="w-5 h-5" />
-            Support The Movement
+            Merch Gallery
           </div>
         </motion.div>
 
@@ -89,7 +86,7 @@ export default function SupportMovement() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.15 }}
         >
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mb-6">
             {movementImages.map((imagePath) => (
               <figure
                 key={imagePath}
@@ -97,13 +94,19 @@ export default function SupportMovement() {
               >
                 <img
                   src={imagePath}
-                  alt="Supporter wearing movement apparel"
+                  alt="Customer wearing I Want My Lawyer Present merchandise"
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                 />
               </figure>
             ))}
           </div>
+
+          <p className="text-center text-primary-100 text-sm">
+            Space-saving update: full gallery sets are now transformed into animated marketing reels in the
+            <a href="#video-clips" className="text-yellow-300 font-semibold ml-1 hover:text-yellow-200">Video Clips</a>
+            section.
+          </p>
         </motion.div>
       </div>
     </section>

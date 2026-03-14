@@ -141,6 +141,23 @@ function ProductCard({ product, onAddToCart, delay }: ProductCardProps) {
 
         <p className="text-gray-600 line-clamp-2">{product.description}</p>
 
+        {product.sizes && (
+          <div className="text-xs text-gray-600 space-y-1">
+            {product.sizes.men && product.sizes.men.length > 0 && (
+              <p>
+                <span className="font-semibold text-gray-700">Men:</span>{' '}
+                {product.sizes.men.join(', ')}
+              </p>
+            )}
+            {product.sizes.women && product.sizes.women.length > 0 && (
+              <p>
+                <span className="font-semibold text-gray-700">Women:</span>{' '}
+                {product.sizes.women.join(', ')}
+              </p>
+            )}
+          </div>
+        )}
+
         <div className="flex items-center justify-between pt-3 border-t border-gray-200">
           <span className="text-2xl font-bold text-primary-600">
             ${product.price.toFixed(2)}

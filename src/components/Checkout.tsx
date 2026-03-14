@@ -11,10 +11,13 @@ import {
   Wallet,
 } from 'lucide-react';
 import { useCart } from '../useCart';
+import { LINK_NAMESPACES } from '../config/linkNamespaces';
+
+type PaymentMethod = 'card' | 'paypal' | 'zelle' | 'cashapp' | 'applepay';
 
 export default function Checkout() {
   const { items, getTotal, clearCart } = useCart();
-  const [paymentMethod, setPaymentMethod] = useState<'card' | 'paypal'>('card');
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('card');
   const [processing, setProcessing] = useState(false);
   const [success, setSuccess] = useState(false);
   const [purchasedItemIds, setPurchasedItemIds] = useState<string[]>([]);
@@ -53,6 +56,21 @@ export default function Checkout() {
   };
 
   const includesWalletCard = purchasedItemIds.includes('prod-005');
+  const getPayButtonLabel = () => {
+    if (paymentMethod === 'paypal') {
+      return 'Continue to PayPal';
+    }
+    if (paymentMethod === 'zelle') {
+      return 'Complete with Zelle';
+    }
+    if (paymentMethod === 'cashapp') {
+      return 'Complete with Cash App';
+    }
+    if (paymentMethod === 'applepay') {
+      return 'Complete with Apple Pay';
+    }
+    return `Pay $${getTotal().toFixed(2)}`;
+  };
 
   if (success) {
     return (
@@ -274,7 +292,7 @@ export default function Checkout() {
                   </h2>
 
                   {/* Payment Method Selection */}
-                  <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
                     <button
                       type="button"
                       onClick={() => setPaymentMethod('card')}
@@ -298,6 +316,39 @@ export default function Checkout() {
                     >
                       PayPal
                     </button>
+                    <button
+                      type="button"
+                      onClick={() => setPaymentMethod('zelle')}
+                      className={`p-4 border-2 rounded-lg font-semibold transition-all ${
+                        paymentMethod === 'zelle'
+                          ? 'border-primary-600 bg-primary-50 text-primary-700'
+                          : 'border-gray-300 hover:border-gray-400'
+                      }`}
+                    >
+                      Zelle
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setPaymentMethod('cashapp')}
+                      className={`p-4 border-2 rounded-lg font-semibold transition-all ${
+                        paymentMethod === 'cashapp'
+                          ? 'border-primary-600 bg-primary-50 text-primary-700'
+                          : 'border-gray-300 hover:border-gray-400'
+                      }`}
+                    >
+                      Cash App
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setPaymentMethod('applepay')}
+                      className={`p-4 border-2 rounded-lg font-semibold transition-all ${
+                        paymentMethod === 'applepay'
+                          ? 'border-primary-600 bg-primary-50 text-primary-700'
+                          : 'border-gray-300 hover:border-gray-400'
+                      }`}
+                    >
+                      Apple Pay
+                    </button>
                   </div>
 
                   {/* Card Payment Form */}
@@ -312,7 +363,7 @@ export default function Checkout() {
                           name="cardNumber"
                           value={formData.cardNumber}
                           onChange={handleInputChange}
-                          required
+                            required={paymentMethod === 'card'}
                           placeholder="1234 5678 9012 3456"
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                         />
@@ -327,7 +378,7 @@ export default function Checkout() {
                             name="expiry"
                             value={formData.expiry}
                             onChange={handleInputChange}
-                            required
+                            required={paymentMethod === 'card'}
                             placeholder="MM/YY"
                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                           />
@@ -341,7 +392,7 @@ export default function Checkout() {
                             name="cvv"
                             value={formData.cvv}
                             onChange={handleInputChange}
-                            required
+                            required={paymentMethod === 'card'}
                             placeholder="123"
                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                           />
@@ -353,32 +404,57 @@ export default function Checkout() {
                   {/* PayPal Info */}
                   {paymentMethod === 'paypal' && (
                     <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-                      <p className="text-blue-800 mb-4">
-                        You will be redirected to PayPal to complete your
-                        purchase securely.
+                      <p className="text-blue-800 mb-2 font-semibold">PayPal Checkout</p>
+                      <p className="text-blue-800 mb-4 text-sm">
+                        namespace: payment-methods.paypalMeUrl
+                        <br />
+                        {LINK_NAMESPACES.paymentAccounts.paypalMeUrl}
                       </p>
-                      <button
-                        type="submit"
-                        disabled={processing}
-                        className="w-full py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all flex items-center justify-center gap-2"
-                      >
-                        {processing ? 'Processing...' : 'Continue to PayPal'}
-                      </button>
+                    </div>
+                  )}
+
+                  {paymentMethod === 'zelle' && (
+                    <div className="bg-violet-50 border border-violet-200 rounded-lg p-4 text-center">
+                      <p className="text-violet-900 mb-2 font-semibold">Zelle Transfer</p>
+                      <p className="text-violet-900 text-sm">
+                        namespace: payment-methods.zelleHandle
+                        <br />
+                        {LINK_NAMESPACES.paymentAccounts.zelleHandle}
+                      </p>
+                    </div>
+                  )}
+
+                  {paymentMethod === 'cashapp' && (
+                    <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 text-center">
+                      <p className="text-emerald-900 mb-2 font-semibold">Cash App</p>
+                      <p className="text-emerald-900 text-sm">
+                        namespace: payment-methods.cashAppTag
+                        <br />
+                        {LINK_NAMESPACES.paymentAccounts.cashAppTag}
+                      </p>
+                    </div>
+                  )}
+
+                  {paymentMethod === 'applepay' && (
+                    <div className="bg-gray-100 border border-gray-300 rounded-lg p-4 text-center">
+                      <p className="text-gray-900 mb-2 font-semibold">Apple Pay</p>
+                      <p className="text-gray-700 text-sm">
+                        namespace: payment-methods.applePayPhone
+                        <br />
+                        {LINK_NAMESPACES.paymentAccounts.applePayPhone}
+                      </p>
                     </div>
                   )}
                 </div>
 
-                {/* Submit Button for Card */}
-                {paymentMethod === 'card' && (
-                  <button
-                    type="submit"
-                    disabled={processing}
-                    className="w-full py-4 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transform hover:scale-105 transition-all shadow-lg flex items-center justify-center gap-2 disabled:transform-none disabled:bg-gray-400"
-                  >
-                    <Lock className="w-5 h-5" />
-                    {processing ? 'Processing...' : `Pay $${getTotal().toFixed(2)}`}
-                  </button>
-                )}
+                <button
+                  type="submit"
+                  disabled={processing}
+                  className="w-full py-4 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transform hover:scale-105 transition-all shadow-lg flex items-center justify-center gap-2 disabled:transform-none disabled:bg-gray-400"
+                >
+                  <Lock className="w-5 h-5" />
+                  {processing ? 'Processing...' : getPayButtonLabel()}
+                </button>
 
                 {/* Security Notice */}
                 <div className="flex items-start gap-3 bg-green-50 border border-green-200 rounded-lg p-4">

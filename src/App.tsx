@@ -1,11 +1,9 @@
 import Navigation from './components/Navigation';
+import LaunchSpotlight from './components/LaunchSpotlight';
 import Hero from './components/Hero';
 import FounderBio from './components/FounderBio';
-import LegalRightsWalletCard from './components/LegalRightsWalletCard';
-import ImpactSection from './components/ImpactSection';
-import DataVisualization from './components/DataVisualization';
-import WhyItMatters from './components/WhyItMatters';
 import Shop from './components/Shop';
+import VideoClips from './components/VideoClips';
 import SupportMovement from './components/SupportMovement';
 import Checkout from './components/Checkout';
 import CallToAction from './components/CallToAction';
@@ -17,14 +15,12 @@ function App() {
     <CartProvider>
       <div className="min-h-screen">
         <Navigation />
+        <LaunchSpotlight />
         <Hero />
         <FounderBio />
-        <LegalRightsWalletCard />
         <Shop />
+        <VideoClips />
         <SupportMovement />
-        <ImpactSection />
-        <DataVisualization />
-        <WhyItMatters />
         <Checkout />
         <CallToAction />
         <Footer />

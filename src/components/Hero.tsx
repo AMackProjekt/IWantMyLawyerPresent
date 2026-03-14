@@ -34,15 +34,15 @@ export default function Hero() {
             </motion.div>
 
             <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Your Rights.
+              Premium Gear.
               <br />
-              Your Lawyer.
+              Bold Message.
               <br />
-              <span className="text-yellow-400">Your Freedom.</span>
+              <span className="text-yellow-400">Official Storefront.</span>
             </h1>
 
             <p className="text-xl sm:text-2xl text-blue-100 mb-8 leading-relaxed">
-              Shop Apparel
+              Apparel, accessories, and digital drops from I Want My Lawyer Present.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -56,7 +56,7 @@ export default function Hero() {
                 onClick={() => scrollToSection('support')}
                 className="px-8 py-4 bg-white/10 backdrop-blur text-white font-semibold rounded-lg text-lg hover:bg-white/20 transform hover:scale-105 transition-all border-2 border-white/30"
               >
-                Support The Movement
+                View Merch Gallery
               </button>
             </div>
           </motion.div>
@@ -73,18 +73,18 @@ export default function Hero() {
               <div className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
                 <div className="space-y-6">
                   <StatCard
-                    number="2,104"
-                    label="Cases Preventable With Legal Rep"
+                    number="30+"
+                    label="Merch Variations"
                     delay={0.5}
                   />
                   <StatCard
-                    number="6,312"
-                    label="Families Impacted"
+                    number="24/7"
+                    label="Secure Checkout Access"
                     delay={0.7}
                   />
                   <StatCard
-                    number="7.3 yrs"
-                    label="Average Time Wrongfully Served"
+                    number="4+"
+                    label="Payment Methods"
                     delay={0.9}
                   />
                 </div>

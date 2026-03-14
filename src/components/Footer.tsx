@@ -1,4 +1,5 @@
 import { Scale, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { LINK_NAMESPACES } from '../config/linkNamespaces';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -14,8 +15,8 @@ export default function Footer() {
               <span className="text-xl font-bold">I Want My Lawyer</span>
             </div>
             <p className="text-gray-400 text-sm">
-              Protecting your constitutional rights during police encounters.
-              Legal representation matters.
+              Official storefront for I Want My Lawyer Present apparel,
+              accessories, and digital drops.
             </p>
           </div>
 
@@ -24,23 +25,23 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <a href="#" className="hover:text-yellow-400 transition-colors">
-                  About Us
+                <a href="#shop" className="hover:text-yellow-400 transition-colors">
+                  Shop
                 </a>
               </li>
               <li>
-                <a href="#statistics" className="hover:text-yellow-400 transition-colors">
-                  The Data
+                <a href="#video-clips" className="hover:text-yellow-400 transition-colors">
+                  Video Clips
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-yellow-400 transition-colors">
-                  Know Your Rights
+                <a href="#checkout" className="hover:text-yellow-400 transition-colors">
+                  Checkout
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-yellow-400 transition-colors">
-                  Resources
+                <a href="#contact" className="hover:text-yellow-400 transition-colors">
+                  Contact
                 </a>
               </li>
             </ul>
@@ -78,7 +79,9 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Connect</h3>
             <div className="flex gap-4 mb-4">
               <a
-                href="#"
+                href={LINK_NAMESPACES.facebookPageUrl}
+                target="_blank"
+                rel="noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-400 hover:text-gray-900 transition-all"
                 aria-label="Facebook"
               >
@@ -92,7 +95,9 @@ export default function Footer() {
                 <Twitter className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href={LINK_NAMESPACES.instagramPageUrl}
+                target="_blank"
+                rel="noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-400 hover:text-gray-900 transition-all"
                 aria-label="Instagram"
               >
@@ -107,10 +112,15 @@ export default function Footer() {
               </a>
             </div>
             <p className="text-gray-400 text-sm">
-              Emergency Hotline:
+              Official Domain:
               <br />
-              <a href="tel:1-800-555-0123" className="text-yellow-400 font-semibold">
-                1-800-555-0123
+              <a
+                href={LINK_NAMESPACES.siteDomain}
+                target="_blank"
+                rel="noreferrer"
+                className="text-yellow-400 font-semibold"
+              >
+                iwantmylawyerpresent.com
               </a>
             </p>
           </div>
@@ -136,9 +146,8 @@ export default function Footer() {
                 </span>
               </a>
               <p className="text-gray-500 text-xs max-w-2xl text-center md:text-right">
-                Disclaimer: This website provides general information only and does
-                not constitute legal advice. For specific legal advice, please
-                consult with a qualified attorney.
+                Product details, pricing, and availability may change without
+                notice. Please review your order before submitting payment.
               </p>
             </div>
           </div>
