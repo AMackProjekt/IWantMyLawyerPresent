@@ -5,7 +5,7 @@ out
 deploy
 .env
 .env.local
-tsconfig.tsbuildinfo
+*.tsbuildinfo
 *.log
 
 # Azure Functions local settings
