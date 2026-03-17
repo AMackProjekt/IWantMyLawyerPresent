@@ -8,7 +8,7 @@ import SupportMovement from './components/SupportMovement';
 import Checkout from './components/Checkout';
 import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
-import { CartProvider } from './CartContext';
+import { CartProvider } from './CartProvider';
 
 function App() {
   return (

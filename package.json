@@ -4,8 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "check:postcss": "node scripts/guard-postcss-tailwind.mjs",
+    "predev": "npm run check:postcss",
+    "prepreview": "npm run check:postcss",
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -p tsconfig.vite.json --noEmit && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "reels:export": "node scripts/export-marketing-reels.mjs"

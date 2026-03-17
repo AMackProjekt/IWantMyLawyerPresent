@@ -1,0 +1,1131 @@
+diff --git a/src/App.tsx b/src/App.tsx
+index adf8a20..61684a1 100644
+--- a/src/App.tsx
++++ b/src/App.tsx
+@@ -1,11 +1,9 @@
+ import Navigation from './components/Navigation';
++import LaunchSpotlight from './components/LaunchSpotlight';
+ import Hero from './components/Hero';
+ import FounderBio from './components/FounderBio';
+-import LegalRightsWalletCard from './components/LegalRightsWalletCard';
+-import ImpactSection from './components/ImpactSection';
+-import DataVisualization from './components/DataVisualization';
+-import WhyItMatters from './components/WhyItMatters';
+ import Shop from './components/Shop';
++import VideoClips from './components/VideoClips';
+ import SupportMovement from './components/SupportMovement';
+ import Checkout from './components/Checkout';
+ import CallToAction from './components/CallToAction';
+@@ -17,14 +15,12 @@ function App() {
+     <CartProvider>
+       <div className="min-h-screen">
+         <Navigation />
++        <LaunchSpotlight />
+         <Hero />
+         <FounderBio />
+-        <LegalRightsWalletCard />
+         <Shop />
++        <VideoClips />
+         <SupportMovement />
+-        <ImpactSection />
+-        <DataVisualization />
+-        <WhyItMatters />
+         <Checkout />
+         <CallToAction />
+         <Footer />
+diff --git a/src/components/CallToAction.tsx b/src/components/CallToAction.tsx
+new file mode 100644
+index 0000000..1f9ccb4
+--- /dev/null
++++ b/src/components/CallToAction.tsx
+@@ -0,0 +1,185 @@
++import { motion } from 'framer-motion';
++import { Phone, Mail, FileText, Shield } from 'lucide-react';
++
++export default function CallToAction() {
++  return (
++    <section id="contact" className="py-20 gradient-bg">
++      <div className="section-container">
++        <motion.div
++          initial={{ opacity: 0, y: 20 }}
++          whileInView={{ opacity: 1, y: 0 }}
++          viewport={{ once: true }}
++          transition={{ duration: 0.6 }}
++          className="text-center mb-12"
++        >
++          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
++            Let's Build Your Order
++          </h2>
++          <p className="text-xl text-blue-100 max-w-3xl mx-auto">
++            Need help with sizing, bulk orders, or custom bundles? Reach out
++            and we will get back to you.
++          </p>
++        </motion.div>
++
++        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
++          <ActionCard
++            icon={<Phone className="w-8 h-8" />}
++            title="Order Support"
++            description="Get quick help with order updates and checkout questions"
++            link="#"
++            delay={0.1}
++          />
++          <ActionCard
++            icon={<Mail className="w-8 h-8" />}
++            title="Wholesale Inquiries"
++            description="Ask about bulk pricing for teams, events, and partners"
++            link="#"
++            delay={0.2}
++          />
++          <ActionCard
++            icon={<FileText className="w-8 h-8" />}
++            title="Size + Fit Guide"
++            description="Get recommendations before placing your order"
++            link="#"
++            delay={0.3}
++          />
++          <ActionCard
++            icon={<Shield className="w-8 h-8" />}
++            title="Secure Orders"
++            description="Protected checkout with multiple payment options"
++            link="#"
++            delay={0.4}
++          />
++        </div>
++
++        {/* Contact Form */}
++        <motion.div
++          initial={{ opacity: 0, y: 20 }}
++          whileInView={{ opacity: 1, y: 0 }}
++          viewport={{ once: true }}
++          transition={{ duration: 0.6, delay: 0.5 }}
++          className="max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-2xl"
++        >
++          <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
++            Contact The Storefront Team
++          </h3>
++          <form className="space-y-4">
++            <div className="grid md:grid-cols-2 gap-4">
++              <div>
++                <label
++                  htmlFor="firstName"
++                  className="block text-sm font-semibold text-gray-700 mb-2"
++                >
++                  First Name
++                </label>
++                <input
++                  type="text"
++                  id="firstName"
++                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
++                  placeholder="John"
++                />
++              </div>
++              <div>
++                <label
++                  htmlFor="lastName"
++                  className="block text-sm font-semibold text-gray-700 mb-2"
++                >
++                  Last Name
++                </label>
++                <input
++                  type="text"
++                  id="lastName"
++                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
++                  placeholder="Doe"
++                />
++              </div>
++            </div>
++
++            <div>
++              <label
++                htmlFor="email"
++                className="block text-sm font-semibold text-gray-700 mb-2"
++              >
++                Email Address
++              </label>
++              <input
++                type="email"
++                id="email"
++                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
++                placeholder="john.doe@example.com"
++              />
++            </div>
++
++            <div>
++              <label
++                htmlFor="phone"
++                className="block text-sm font-semibold text-gray-700 mb-2"
++              >
++                Phone Number
++              </label>
++              <input
++                type="tel"
++                id="phone"
++                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
++                placeholder="(555) 123-4567"
++              />
++            </div>
++
++            <div>
++              <label
++                htmlFor="message"
++                className="block text-sm font-semibold text-gray-700 mb-2"
++              >
++                What Do You Need?
++              </label>
++              <textarea
++                id="message"
++                rows={4}
++                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
++                placeholder="Tell us what items or order details you need help with..."
++              ></textarea>
++            </div>
++
++            <button
++              type="submit"
++              className="w-full py-4 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transform hover:scale-105 transition-all shadow-lg"
++            >
++              Send Message
++            </button>
++
++            <p className="text-sm text-gray-500 text-center">
++              By submitting this form, you agree to our privacy policy. We will
++              never share your information.
++            </p>
++          </form>
++        </motion.div>
++      </div>
++    </section>
++  );
++}
++
++interface ActionCardProps {
++  icon: React.ReactNode;
++  title: string;
++  description: string;
++  link: string;
++  delay: number;
++}
++
++function ActionCard({ icon, title, description, link, delay }: ActionCardProps) {
++  return (
++    <motion.a
++      href={link}
++      initial={{ opacity: 0, y: 20 }}
++      whileInView={{ opacity: 1, y: 0 }}
++      viewport={{ once: true }}
++      transition={{ duration: 0.5, delay }}
++      whileHover={{ scale: 1.05 }}
++      className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all cursor-pointer"
++    >
++      <div className="text-yellow-400 mb-4">{icon}</div>
++      <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
++      <p className="text-blue-100 text-sm">{description}</p>
++    </motion.a>
++  );
++}
+diff --git a/src/components/Checkout.tsx b/src/components/Checkout.tsx
+index f426887..8e9a565 100644
+--- a/src/components/Checkout.tsx
++++ b/src/components/Checkout.tsx
+@@ -11,10 +11,13 @@ import {
+   Wallet,
+ } from 'lucide-react';
+ import { useCart } from '../useCart';
++import { LINK_NAMESPACES } from '../config/linkNamespaces';
++
++type PaymentMethod = 'card' | 'paypal' | 'zelle' | 'cashapp' | 'applepay';
+ 
+ export default function Checkout() {
+   const { items, getTotal, clearCart } = useCart();
+-  const [paymentMethod, setPaymentMethod] = useState<'card' | 'paypal'>('card');
++  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('card');
+   const [processing, setProcessing] = useState(false);
+   const [success, setSuccess] = useState(false);
+   const [purchasedItemIds, setPurchasedItemIds] = useState<string[]>([]);
+@@ -53,6 +56,21 @@ export default function Checkout() {
+   };
+ 
+   const includesWalletCard = purchasedItemIds.includes('prod-005');
++  const getPayButtonLabel = () => {
++    if (paymentMethod === 'paypal') {
++      return 'Continue to PayPal';
++    }
++    if (paymentMethod === 'zelle') {
++      return 'Complete with Zelle';
++    }
++    if (paymentMethod === 'cashapp') {
++      return 'Complete with Cash App';
++    }
++    if (paymentMethod === 'applepay') {
++      return 'Complete with Apple Pay';
++    }
++    return `Pay $${getTotal().toFixed(2)}`;
++  };
+ 
+   if (success) {
+     return (
+@@ -274,7 +292,7 @@ export default function Checkout() {
+                   </h2>
+ 
+                   {/* Payment Method Selection */}
+-                  <div className="grid grid-cols-2 gap-4 mb-6">
++                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                     <button
+                       type="button"
+                       onClick={() => setPaymentMethod('card')}
+@@ -298,6 +316,39 @@ export default function Checkout() {
+                     >
+                       PayPal
+                     </button>
++                    <button
++                      type="button"
++                      onClick={() => setPaymentMethod('zelle')}
++                      className={`p-4 border-2 rounded-lg font-semibold transition-all ${
++                        paymentMethod === 'zelle'
++                          ? 'border-primary-600 bg-primary-50 text-primary-700'
++                          : 'border-gray-300 hover:border-gray-400'
++                      }`}
++                    >
++                      Zelle
++                    </button>
++                    <button
++                      type="button"
++                      onClick={() => setPaymentMethod('cashapp')}
++                      className={`p-4 border-2 rounded-lg font-semibold transition-all ${
++                        paymentMethod === 'cashapp'
++                          ? 'border-primary-600 bg-primary-50 text-primary-700'
++                          : 'border-gray-300 hover:border-gray-400'
++                      }`}
++                    >
++                      Cash App
++                    </button>
++                    <button
++                      type="button"
++                      onClick={() => setPaymentMethod('applepay')}
++                      className={`p-4 border-2 rounded-lg font-semibold transition-all ${
++                        paymentMethod === 'applepay'
++                          ? 'border-primary-600 bg-primary-50 text-primary-700'
++                          : 'border-gray-300 hover:border-gray-400'
++                      }`}
++                    >
++                      Apple Pay
++                    </button>
+                   </div>
+ 
+                   {/* Card Payment Form */}
+@@ -312,7 +363,7 @@ export default function Checkout() {
+                           name="cardNumber"
+                           value={formData.cardNumber}
+                           onChange={handleInputChange}
+-                          required
++                            required={paymentMethod === 'card'}
+                           placeholder="1234 5678 9012 3456"
+                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                         />
+@@ -327,7 +378,7 @@ export default function Checkout() {
+                             name="expiry"
+                             value={formData.expiry}
+                             onChange={handleInputChange}
+-                            required
++                            required={paymentMethod === 'card'}
+                             placeholder="MM/YY"
+                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                           />
+@@ -341,7 +392,7 @@ export default function Checkout() {
+                             name="cvv"
+                             value={formData.cvv}
+                             onChange={handleInputChange}
+-                            required
++                            required={paymentMethod === 'card'}
+                             placeholder="123"
+                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                           />
+@@ -353,32 +404,57 @@ export default function Checkout() {
+                   {/* PayPal Info */}
+                   {paymentMethod === 'paypal' && (
+                     <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
+-                      <p className="text-blue-800 mb-4">
+-                        You will be redirected to PayPal to complete your
+-                        purchase securely.
++                      <p className="text-blue-800 mb-2 font-semibold">PayPal Checkout</p>
++                      <p className="text-blue-800 mb-4 text-sm">
++                        namespace: payment-methods.paypalMeUrl
++                        <br />
++                        {LINK_NAMESPACES.paymentAccounts.paypalMeUrl}
++                      </p>
++                    </div>
++                  )}
++
++                  {paymentMethod === 'zelle' && (
++                    <div className="bg-violet-50 border border-violet-200 rounded-lg p-4 text-center">
++                      <p className="text-violet-900 mb-2 font-semibold">Zelle Transfer</p>
++                      <p className="text-violet-900 text-sm">
++                        namespace: payment-methods.zelleHandle
++                        <br />
++                        {LINK_NAMESPACES.paymentAccounts.zelleHandle}
++                      </p>
++                    </div>
++                  )}
++
++                  {paymentMethod === 'cashapp' && (
++                    <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 text-center">
++                      <p className="text-emerald-900 mb-2 font-semibold">Cash App</p>
++                      <p className="text-emerald-900 text-sm">
++                        namespace: payment-methods.cashAppTag
++                        <br />
++                        {LINK_NAMESPACES.paymentAccounts.cashAppTag}
++                      </p>
++                    </div>
++                  )}
++
++                  {paymentMethod === 'applepay' && (
++                    <div className="bg-gray-100 border border-gray-300 rounded-lg p-4 text-center">
++                      <p className="text-gray-900 mb-2 font-semibold">Apple Pay</p>
++                      <p className="text-gray-700 text-sm">
++                        namespace: payment-methods.applePayPhone
++                        <br />
++                        {LINK_NAMESPACES.paymentAccounts.applePayPhone}
+                       </p>
+-                      <button
+-                        type="submit"
+-                        disabled={processing}
+-                        className="w-full py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all flex items-center justify-center gap-2"
+-                      >
+-                        {processing ? 'Processing...' : 'Continue to PayPal'}
+-                      </button>
+                     </div>
+                   )}
+                 </div>
+ 
+-                {/* Submit Button for Card */}
+-                {paymentMethod === 'card' && (
+-                  <button
+-                    type="submit"
+-                    disabled={processing}
+-                    className="w-full py-4 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transform hover:scale-105 transition-all shadow-lg flex items-center justify-center gap-2 disabled:transform-none disabled:bg-gray-400"
+-                  >
+-                    <Lock className="w-5 h-5" />
+-                    {processing ? 'Processing...' : `Pay $${getTotal().toFixed(2)}`}
+-                  </button>
+-                )}
++                <button
++                  type="submit"
++                  disabled={processing}
++                  className="w-full py-4 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transform hover:scale-105 transition-all shadow-lg flex items-center justify-center gap-2 disabled:transform-none disabled:bg-gray-400"
++                >
++                  <Lock className="w-5 h-5" />
++                  {processing ? 'Processing...' : getPayButtonLabel()}
++                </button>
+ 
+                 {/* Security Notice */}
+                 <div className="flex items-start gap-3 bg-green-50 border border-green-200 rounded-lg p-4">
+diff --git a/src/components/Footer.tsx b/src/components/Footer.tsx
+index 8390b44..3f3263a 100644
+--- a/src/components/Footer.tsx
++++ b/src/components/Footer.tsx
+@@ -1,4 +1,5 @@
+ import { Scale, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
++import { LINK_NAMESPACES } from '../config/linkNamespaces';
+ 
+ export default function Footer() {
+   const currentYear = new Date().getFullYear();
+@@ -14,8 +15,8 @@ export default function Footer() {
+               <span className="text-xl font-bold">I Want My Lawyer</span>
+             </div>
+             <p className="text-gray-400 text-sm">
+-              Protecting your constitutional rights during police encounters.
+-              Legal representation matters.
++              Official storefront for I Want My Lawyer Present apparel,
++              accessories, and digital drops.
+             </p>
+           </div>
+ 
+@@ -24,23 +25,23 @@ export default function Footer() {
+             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+             <ul className="space-y-2 text-gray-400">
+               <li>
+-                <a href="#" className="hover:text-yellow-400 transition-colors">
+-                  About Us
++                <a href="#shop" className="hover:text-yellow-400 transition-colors">
++                  Shop
+                 </a>
+               </li>
+               <li>
+-                <a href="#statistics" className="hover:text-yellow-400 transition-colors">
+-                  The Data
++                <a href="#video-clips" className="hover:text-yellow-400 transition-colors">
++                  Video Clips
+                 </a>
+               </li>
+               <li>
+-                <a href="#" className="hover:text-yellow-400 transition-colors">
+-                  Know Your Rights
++                <a href="#checkout" className="hover:text-yellow-400 transition-colors">
++                  Checkout
+                 </a>
+               </li>
+               <li>
+-                <a href="#" className="hover:text-yellow-400 transition-colors">
+-                  Resources
++                <a href="#contact" className="hover:text-yellow-400 transition-colors">
++                  Contact
+                 </a>
+               </li>
+             </ul>
+@@ -78,7 +79,9 @@ export default function Footer() {
+             <h3 className="text-lg font-semibold mb-4">Connect</h3>
+             <div className="flex gap-4 mb-4">
+               <a
+-                href="#"
++                href={LINK_NAMESPACES.facebookPageUrl}
++                target="_blank"
++                rel="noreferrer"
+                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-400 hover:text-gray-900 transition-all"
+                 aria-label="Facebook"
+               >
+@@ -92,7 +95,9 @@ export default function Footer() {
+                 <Twitter className="w-5 h-5" />
+               </a>
+               <a
+-                href="#"
++                href={LINK_NAMESPACES.instagramPageUrl}
++                target="_blank"
++                rel="noreferrer"
+                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-400 hover:text-gray-900 transition-all"
+                 aria-label="Instagram"
+               >
+@@ -107,10 +112,15 @@ export default function Footer() {
+               </a>
+             </div>
+             <p className="text-gray-400 text-sm">
+-              Emergency Hotline:
++              Official Domain:
+               <br />
+-              <a href="tel:1-800-555-0123" className="text-yellow-400 font-semibold">
+-                1-800-555-0123
++              <a
++                href={LINK_NAMESPACES.siteDomain}
++                target="_blank"
++                rel="noreferrer"
++                className="text-yellow-400 font-semibold"
++              >
++                iwantmylawyerpresent.com
+               </a>
+             </p>
+           </div>
+@@ -136,9 +146,8 @@ export default function Footer() {
+                 </span>
+               </a>
+               <p className="text-gray-500 text-xs max-w-2xl text-center md:text-right">
+-                Disclaimer: This website provides general information only and does
+-                not constitute legal advice. For specific legal advice, please
+-                consult with a qualified attorney.
++                Product details, pricing, and availability may change without
++                notice. Please review your order before submitting payment.
+               </p>
+             </div>
+           </div>
+diff --git a/src/components/FounderBio.tsx b/src/components/FounderBio.tsx
+index c627a2f..3e23509 100644
+--- a/src/components/FounderBio.tsx
++++ b/src/components/FounderBio.tsx
+@@ -32,7 +32,7 @@ export default function FounderBio() {
+                   <h3 className="text-2xl font-bold text-white mb-1">
+                     Brian Mason
+                   </h3>
+-                  <p className="text-blue-200">Founder/Author/Advocate</p>
++                  <p className="text-blue-200">Founder / Creative Director</p>
+                 </div>
+               </div>
+             </motion.div>
+@@ -47,53 +47,36 @@ export default function FounderBio() {
+               <div className="flex items-center gap-3 mb-4">
+                 <Award className="w-8 h-8 text-yellow-500" />
+                 <span className="text-primary-600 font-semibold text-lg">
+-                  From Adversity to Advocacy
++                  Brand Story
+                 </span>
+               </div>
+ 
+               <h2 className="text-4xl font-bold text-gray-900 mb-6">
+-                A Journey of Resilience & Justice
++                Built To Be Worn. Built To Be Seen.
+               </h2>
+ 
+               <div className="space-y-4 text-gray-700 leading-relaxed">
+                 <p>
+-                  Brian Mason's life is a testament to resilience,
+-                  accountability, and the relentless pursuit of justice. After
+-                  serving more than 20 years of incarceration, he emerged with a
+-                  renewed purpose: to ensure that others never endure the same
+-                  systemic failures that once defined his experience within the
+-                  criminal justice system.
++                  I Want My Lawyer Present is a statement brand built around
++                  bold design, conversation-starting apparel, and quality-first
++                  drops that represent confidence and identity.
+                 </p>
+ 
+                 <p>
+-                  Through that journey, he witnessed firsthand the devastating
+-                  consequences of inadequate legal representation and a
+-                  widespread lack of awareness surrounding constitutional
+-                  rights-gaps that continue to contribute to wrongful
+-                  convictions and decades of lost freedom.
++                  Brian Mason leads the creative direction, product curation,
++                  and launch strategy behind each release, keeping every piece
++                  clean, wearable, and instantly recognizable.
+                 </p>
+ 
+                 <p>
+-                  Today, Brian Mason has transformed that hard-earned
+-                  experience into a mission. He dedicates his work to educating
+-                  individuals about their constitutional protections and
+-                  equipping them with the knowledge and confidence needed to
+-                  safeguard their rights during police encounters. His voice now
+-                  serves as both a warning and a guide-turning lived experience
+-                  into a powerful platform for prevention, empowerment, and
+-                  reform.
+-                </p>
+-
+-                <p>
+-                  Through this movement, he is not only reclaiming his
+-                  narrative but helping others protect their freedom before it
+-                  is taken from them.
++                  From signature tees to digital wallet products, the storefront
++                  is designed to make checkout easy while giving customers a
++                  premium experience from first click to delivery.
+                 </p>
+ 
+                 <p className="font-semibold text-primary-700">
+-                  "Knowledge of your rights isn't just power-it's protection.
+-                  It can be the difference between walking free and losing a
+-                  lifetime."
++                  "The goal is simple: release products people actually want to
++                  wear, and make every launch feel like an event."
+                 </p>
+               </div>
+ 
+@@ -101,23 +84,21 @@ export default function FounderBio() {
+               <div className="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-gray-200">
+                 <div className="text-center">
+                   <div className="text-3xl font-bold text-primary-600 mb-1">
+-                    20+
+-                  </div>
+-                  <div className="text-sm text-gray-600">
+-                    Years Experience
++                    30+
+                   </div>
++                  <div className="text-sm text-gray-600">Product Variants</div>
+                 </div>
+                 <div className="text-center">
+                   <div className="text-3xl font-bold text-primary-600 mb-1">
+-                    1000+
++                    4+
+                   </div>
+-                  <div className="text-sm text-gray-600">Lives Impacted</div>
++                  <div className="text-sm text-gray-600">Payment Options</div>
+                 </div>
+                 <div className="text-center">
+                   <div className="text-3xl font-bold text-primary-600 mb-1">
+                     100%
+                   </div>
+-                  <div className="text-sm text-gray-600">Dedicated</div>
++                  <div className="text-sm text-gray-600">Authentic Brand</div>
+                 </div>
+               </div>
+ 
+@@ -126,19 +107,19 @@ export default function FounderBio() {
+                 <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm">
+                   <BookOpen className="w-5 h-5 text-primary-600" />
+                   <span className="text-sm font-medium text-gray-700">
+-                    Education
++                    Product Drops
+                   </span>
+                 </div>
+                 <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm">
+                   <Heart className="w-5 h-5 text-red-500" />
+                   <span className="text-sm font-medium text-gray-700">
+-                    Advocacy
++                    Customer Love
+                   </span>
+                 </div>
+                 <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm">
+                   <Users className="w-5 h-5 text-blue-600" />
+                   <span className="text-sm font-medium text-gray-700">
+-                    Community
++                    Brand Community
+                   </span>
+                 </div>
+               </div>
+diff --git a/src/components/Hero.tsx b/src/components/Hero.tsx
+index 8c84b16..26057c2 100644
+--- a/src/components/Hero.tsx
++++ b/src/components/Hero.tsx
+@@ -34,15 +34,15 @@ export default function Hero() {
+             </motion.div>
+ 
+             <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+-              Your Rights.
++              Premium Gear.
+               <br />
+-              Your Lawyer.
++              Bold Message.
+               <br />
+-              <span className="text-yellow-400">Your Freedom.</span>
++              <span className="text-yellow-400">Official Storefront.</span>
+             </h1>
+ 
+             <p className="text-xl sm:text-2xl text-blue-100 mb-8 leading-relaxed">
+-              Shop Apparel
++              Apparel, accessories, and digital drops from I Want My Lawyer Present.
+             </p>
+ 
+             <div className="flex flex-col sm:flex-row gap-4">
+@@ -56,7 +56,7 @@ export default function Hero() {
+                 onClick={() => scrollToSection('support')}
+                 className="px-8 py-4 bg-white/10 backdrop-blur text-white font-semibold rounded-lg text-lg hover:bg-white/20 transform hover:scale-105 transition-all border-2 border-white/30"
+               >
+-                Support The Movement
++                View Merch Gallery
+               </button>
+             </div>
+           </motion.div>
+@@ -73,18 +73,18 @@ export default function Hero() {
+               <div className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                 <div className="space-y-6">
+                   <StatCard
+-                    number="2,104"
+-                    label="Cases Preventable With Legal Rep"
++                    number="30+"
++                    label="Merch Variations"
+                     delay={0.5}
+                   />
+                   <StatCard
+-                    number="6,312"
+-                    label="Families Impacted"
++                    number="24/7"
++                    label="Secure Checkout Access"
+                     delay={0.7}
+                   />
+                   <StatCard
+-                    number="7.3 yrs"
+-                    label="Average Time Wrongfully Served"
++                    number="4+"
++                    label="Payment Methods"
+                     delay={0.9}
+                   />
+                 </div>
+diff --git a/src/components/LaunchSpotlight.tsx b/src/components/LaunchSpotlight.tsx
+new file mode 100644
+index 0000000..6de2f56
+--- /dev/null
++++ b/src/components/LaunchSpotlight.tsx
+@@ -0,0 +1,114 @@
++import { motion } from 'framer-motion';
++import { Flame, PlayCircle, Sparkles } from 'lucide-react';
++import { LINK_NAMESPACES } from '../config/linkNamespaces';
++
++export default function LaunchSpotlight() {
++  const scrollToShop = () => {
++    const section = document.getElementById('shop');
++    section?.scrollIntoView({ behavior: 'smooth' });
++  };
++
++  return (
++    <section className="relative min-h-screen pt-16 overflow-hidden bg-black text-white">
++      <div className="absolute inset-0">
++        <img
++          src={LINK_NAMESPACES.launchMedia.boldCoverImage}
++          alt="Bold cover launch visual"
++          className="h-full w-full object-cover opacity-45"
++        />
++        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black" />
++      </div>
++
++      <div className="section-container relative z-10 py-16 lg:py-24">
++        <div className="grid lg:grid-cols-2 gap-10 items-center">
++          <motion.div
++            initial={{ opacity: 0, x: -40, scale: 0.95 }}
++            animate={{ opacity: 1, x: 0, scale: 1 }}
++            transition={{ duration: 0.65, ease: 'easeOut' }}
++          >
++            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-400/50 bg-yellow-300/10 text-yellow-300 font-semibold mb-5">
++              <Flame className="w-5 h-5" />
++              Coming Soon Drop
++            </div>
++
++            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 uppercase tracking-tight">
++              Coming Soon
++              <br />
++              <span className="text-yellow-300">Launch Wave</span>
++            </h1>
++
++            <div className="flex flex-col sm:flex-row gap-4">
++              <button
++                onClick={scrollToShop}
++                className="px-8 py-4 bg-yellow-400 text-black font-bold rounded-lg hover:bg-yellow-300 transition-all shadow-xl"
++              >
++                Shop The Drop
++              </button>
++              <a
++                href="#video-clips"
++                className="px-8 py-4 border-2 border-white/60 text-white font-bold rounded-lg hover:bg-white/10 transition-all text-center"
++              >
++                Watch Clips
++              </a>
++            </div>
++          </motion.div>
++
++          <motion.div
++            initial={{ opacity: 0, x: 40 }}
++            animate={{ opacity: 1, x: 0 }}
++            transition={{ duration: 0.75, ease: 'easeOut', delay: 0.15 }}
++            className="space-y-4"
++          >
++            <div className="rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-black/40 backdrop-blur-sm">
++              <div className="flex items-center justify-between px-4 py-3 border-b border-white/15">
++                <div className="inline-flex items-center gap-2 text-yellow-300 font-semibold">
++                  <PlayCircle className="w-5 h-5" />
++                  Dynamic Book Launch Video
++                </div>
++                <div className="inline-flex items-center gap-1 text-xs uppercase tracking-wide text-gray-300">
++                  <Sparkles className="w-4 h-4" />
++                  Book Cover Feature
++                </div>
++              </div>
++
++              <video
++                className="w-full aspect-video object-cover"
++                poster={LINK_NAMESPACES.launchMedia.bookCoverImage}
++                autoPlay
++                muted
++                loop
++                playsInline
++                controls
++                preload="metadata"
++              >
++                <source src={LINK_NAMESPACES.launchMedia.comingSoonVideo} type="video/mp4" />
++              </video>
++            </div>
++
++            <div className="grid grid-cols-2 gap-4">
++              <div className="rounded-xl overflow-hidden border border-white/20 bg-black/40">
++                <img
++                  src={LINK_NAMESPACES.launchMedia.bookCoverImage}
++                  alt="Book cover preview"
++                  className="w-full h-full object-cover"
++                />
++              </div>
++              <div className="rounded-xl overflow-hidden border border-white/20 bg-black/40">
++                <video
++                  className="w-full h-full object-cover"
++                  autoPlay
++                  muted
++                  loop
++                  playsInline
++                  preload="metadata"
++                >
++                  <source src={LINK_NAMESPACES.launchMedia.secondaryLaunchVideo} type="video/mp4" />
++                </video>
++              </div>
++            </div>
++          </motion.div>
++        </div>
++      </div>
++    </section>
++  );
++}
+diff --git a/src/components/Navigation.tsx b/src/components/Navigation.tsx
+index 71c245a..877128c 100644
+--- a/src/components/Navigation.tsx
++++ b/src/components/Navigation.tsx
+@@ -28,10 +28,10 @@ export default function Navigation() {
+   const navItems = [
+     { label: 'Home', href: '#' },
+     { label: 'Shop', href: '#shop' },
+-    { label: 'Support', href: '#support' },
++    { label: 'Video Clips', href: '#video-clips' },
++    { label: 'Gallery', href: '#support' },
++    { label: 'Checkout', href: '#checkout' },
+     { label: 'About', href: '#about' },
+-    { label: 'Statistics', href: '#statistics' },
+-    { label: 'Know Your Rights', href: '#rights' },
+     { label: 'Contact', href: '#contact' },
+   ];
+ 
+diff --git a/src/components/Shop.tsx b/src/components/Shop.tsx
+index d66b73a..6fe9d4a 100644
+--- a/src/components/Shop.tsx
++++ b/src/components/Shop.tsx
+@@ -141,6 +141,23 @@ function ProductCard({ product, onAddToCart, delay }: ProductCardProps) {
+ 
+         <p className="text-gray-600 line-clamp-2">{product.description}</p>
+ 
++        {product.sizes && (
++          <div className="text-xs text-gray-600 space-y-1">
++            {product.sizes.men && product.sizes.men.length > 0 && (
++              <p>
++                <span className="font-semibold text-gray-700">Men:</span>{' '}
++                {product.sizes.men.join(', ')}
++              </p>
++            )}
++            {product.sizes.women && product.sizes.women.length > 0 && (
++              <p>
++                <span className="font-semibold text-gray-700">Women:</span>{' '}
++                {product.sizes.women.join(', ')}
++              </p>
++            )}
++          </div>
++        )}
++
+         <div className="flex items-center justify-between pt-3 border-t border-gray-200">
+           <span className="text-2xl font-bold text-primary-600">
+             ${product.price.toFixed(2)}
+diff --git a/src/components/SupportMovement.tsx b/src/components/SupportMovement.tsx
+index 7835a3e..0e6b7db 100644
+--- a/src/components/SupportMovement.tsx
++++ b/src/components/SupportMovement.tsx
+@@ -2,41 +2,38 @@ import { motion } from 'framer-motion';
+ import { HandHeart, Shirt, Megaphone, Users } from 'lucide-react';
+ 
+ const movementImages = [
++  '/images/Bold-Cover.JPG',
++  '/images/Book-Cover.JPG',
+   '/images/IMG_5699.JPG',
+   '/images/IMG_5701 (1).JPG',
+-  '/images/IMG_5702.JPG',
+-  '/images/IMG_5703.JPG',
+-  '/images/IMG_5707.JPG',
+-  '/images/IMG_5708.jpg',
+-  '/images/IMG_5709.JPG',
+   '/images/TShirt2.JPG',
+-  '/images/TShirt3.JPG',
++  '/images/Womens-Tees.JPG',
+ ];
+ 
+ const supportWays = [
+   {
+-    title: 'Protect Yourself',
++    title: 'Shop New Releases',
+     description:
+-      'Show up for justice with products that keep legal awareness visible and actionable.',
++      'Browse featured apparel and accessories from the latest storefront drops.',
+     icon: Shirt,
+     href: '#shop',
+-    cta: 'Shop Apparel',
++    cta: 'Shop Now',
+   },
+   {
+-    title: 'Sponsor Outreach',
++    title: 'Watch Brand Clips',
+     description:
+-      'Support events, materials, and workshops that teach people how to protect their rights.',
++      'See quick videos of product details, fit previews, and launch highlights.',
+     icon: Megaphone,
+-    href: '#contact',
+-    cta: 'Sponsor A Program',
++    href: '#video-clips',
++    cta: 'Watch Clips',
+   },
+   {
+     title: 'Join The Community',
+     description:
+-      'Become part of a network advocating for legal awareness, justice reform, and second chances.',
++      'Follow the brand, tag your looks, and get updates for upcoming product launches.',
+     icon: Users,
+     href: '#contact',
+-    cta: 'Get Involved',
++    cta: 'Connect With Us',
+   },
+ ];
+ 
+@@ -53,7 +50,7 @@ export default function SupportMovement() {
+         >
+           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-yellow-300 font-semibold mb-5">
+             <HandHeart className="w-5 h-5" />
+-            Support The Movement
++            Merch Gallery
+           </div>
+         </motion.div>
+ 
+@@ -89,7 +86,7 @@ export default function SupportMovement() {
+           viewport={{ once: true }}
+           transition={{ duration: 0.6, delay: 0.15 }}
+         >
+-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
++          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mb-6">
+             {movementImages.map((imagePath) => (
+               <figure
+                 key={imagePath}
+@@ -97,13 +94,19 @@ export default function SupportMovement() {
+               >
+                 <img
+                   src={imagePath}
+-                  alt="Supporter wearing movement apparel"
++                  alt="Customer wearing I Want My Lawyer Present merchandise"
+                   loading="lazy"
+                   className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                 />
+               </figure>
+             ))}
+           </div>
++
++          <p className="text-center text-primary-100 text-sm">
++            Space-saving update: full gallery sets are now transformed into animated marketing reels in the
++            <a href="#video-clips" className="text-yellow-300 font-semibold ml-1 hover:text-yellow-200">Video Clips</a>
++            section.
++          </p>
+         </motion.div>
+       </div>
+     </section>
+diff --git a/src/components/VideoClips.tsx b/src/components/VideoClips.tsx
+new file mode 100644
+index 0000000..c59975a
+--- /dev/null
++++ b/src/components/VideoClips.tsx
+@@ -0,0 +1,144 @@
++import { useEffect, useState } from 'react';
++import { motion, AnimatePresence } from 'framer-motion';
++import { PlayCircle } from 'lucide-react';
++import { LINK_NAMESPACES } from '../config/linkNamespaces';
++
++export default function VideoClips() {
++  return (
++    <section id="video-clips" className="py-20 bg-white">
++      <div className="section-container">
++        <motion.div
++          initial={{ opacity: 0, y: 20 }}
++          whileInView={{ opacity: 1, y: 0 }}
++          viewport={{ once: true }}
++          transition={{ duration: 0.5 }}
++          className="text-center mb-10"
++        >
++          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 text-primary-700 font-semibold mb-4">
++            <PlayCircle className="w-5 h-5" />
++            Video Clips
++          </div>
++          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
++            Watch The Brand In Motion
++          </h2>
++          <p className="text-gray-600 max-w-2xl mx-auto">
++            Drop in your final video clip links anytime using the embedded-video-clips namespace.
++          </p>
++        </motion.div>
++
++        <div className="mb-10">
++          <h3 className="text-2xl font-bold text-gray-900 mb-4">Marketing Reels From Gallery</h3>
++          <p className="text-gray-600 mb-6 max-w-3xl">
++            These reels are generated from your gallery images to keep media lightweight while still feeling like video ads.
++          </p>
++
++          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
++            {LINK_NAMESPACES.marketingClips.map((clip, index) => (
++              <SequenceClipCard
++                key={clip.title}
++                title={clip.title}
++                frames={clip.frames}
++                delay={index * 0.1}
++              />
++            ))}
++          </div>
++        </div>
++
++        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
++          {LINK_NAMESPACES.videoEmbeds.map((clip, index) => (
++            <motion.article
++              key={clip.title}
++              initial={{ opacity: 0, y: 20 }}
++              whileInView={{ opacity: 1, y: 0 }}
++              viewport={{ once: true }}
++              transition={{ duration: 0.45, delay: index * 0.1 }}
++              className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden"
++            >
++              <div className="aspect-video bg-gray-100">
++                {clip.type === 'embed' ? (
++                  <iframe
++                    src={clip.src}
++                    title={clip.title}
++                    className="w-full h-full"
++                    loading="lazy"
++                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
++                    referrerPolicy="strict-origin-when-cross-origin"
++                    allowFullScreen
++                  />
++                ) : (
++                  <video
++                    className="w-full h-full object-cover"
++                    controls
++                    preload="metadata"
++                    poster={clip.poster}
++                  >
++                    <source src={clip.src} type="video/mp4" />
++                  </video>
++                )}
++              </div>
++              <div className="p-4">
++                <h3 className="font-bold text-gray-900">{clip.title}</h3>
++              </div>
++            </motion.article>
++          ))}
++        </div>
++      </div>
++    </section>
++  );
++}
++
++interface SequenceClipCardProps {
++  title: string;
++  frames: readonly string[];
++  delay: number;
++}
++
++function SequenceClipCard({ title, frames, delay }: SequenceClipCardProps) {
++  const [frameIndex, setFrameIndex] = useState(0);
++
++  useEffect(() => {
++    if (frames.length < 2) {
++      return;
++    }
++
++    const timer = window.setInterval(() => {
++      setFrameIndex((prev) => (prev + 1) % frames.length);
++    }, 950);
++
++    return () => window.clearInterval(timer);
++  }, [frames]);
++
++  return (
++    <motion.article
++      initial={{ opacity: 0, y: 20 }}
++      whileInView={{ opacity: 1, y: 0 }}
++      viewport={{ once: true }}
++      transition={{ duration: 0.45, delay }}
++      className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden"
++    >
++      <div className="relative aspect-video bg-gray-100 overflow-hidden">
++        <AnimatePresence mode="wait">
++          <motion.img
++            key={frames[frameIndex]}
++            src={frames[frameIndex]}
++            alt={`${title} frame`}
++            className="absolute inset-0 h-full w-full object-cover"
++            initial={{ opacity: 0, scale: 1.06 }}
++            animate={{ opacity: 1, scale: 1 }}
++            exit={{ opacity: 0 }}
++            transition={{ duration: 0.45 }}
++            loading="lazy"
++          />
++        </AnimatePresence>
++
++        <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/70 text-white text-xs font-semibold tracking-wide">
++          Marketing Clip
++        </div>
++      </div>
++
++      <div className="p-4">
++        <h3 className="font-bold text-gray-900">{title}</h3>
++      </div>
++    </motion.article>
++  );
++}

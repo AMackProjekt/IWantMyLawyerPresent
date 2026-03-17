@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page Side-by-Side Diff</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: Segoe UI, Tahoma, sans-serif;
+        background: #0b1220;
+        color: #e5e7eb;
+      }
+
+      header {
+        padding: 16px 20px;
+        border-bottom: 1px solid #1f2937;
+        background: #111827;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      p {
+        margin: 6px 0 0;
+        color: #9ca3af;
+      }
+
+      #status {
+        margin: 16px 20px;
+        padding: 10px 12px;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        background: #0f172a;
+        color: #93c5fd;
+      }
+
+      #diff {
+        margin: 0;
+      }
+
+      .d2h-wrapper {
+        margin: 16px;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Landing Page Diff (bda275 -> c2e746)</h1>
+      <p>Side-by-side visual comparison for landing page files.</p>
+    </header>
+
+    <div id="status">Loading patch and rendering side-by-side view...</div>
+    <div id="diff"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html-ui.min.js"></script>
+    <script>
+      async function renderDiff() {
+        const status = document.getElementById('status');
+        const target = document.getElementById('diff');
+
+        try {
+          const response = await fetch('./landing-bda-to-c2e.patch');
+          if (!response.ok) {
+            throw new Error('Could not load patch file: ' + response.status);
+          }
+
+          const patchText = await response.text();
+          if (!patchText.trim()) {
+            status.textContent = 'Patch file is empty. No changes found for selected files.';
+            return;
+          }
+
+          const configuration = {
+            drawFileList: true,
+            fileListToggle: true,
+            fileContentToggle: true,
+            matching: 'lines',
+            outputFormat: 'side-by-side',
+            synchronisedScroll: true,
+            highlight: true,
+          };
+
+          const diff2htmlUi = new Diff2HtmlUI(target, patchText, configuration);
+          diff2htmlUi.draw();
+          diff2htmlUi.highlightCode();
+
+          status.textContent = 'Rendered successfully. Left is old (bda275), right is new (c2e746).';
+        } catch (error) {
+          status.textContent = 'Failed to render diff: ' + error.message;
+        }
+      }
+
+      renderDiff();
+    </script>
+  </body>
+</html>

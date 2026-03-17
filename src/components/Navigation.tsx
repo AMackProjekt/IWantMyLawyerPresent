@@ -5,23 +5,34 @@ import CartDrawer from './CartDrawer';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window === 'undefined') {
+      return 'light';
+    }
+
+    let savedTheme: string | null = null;
+    try {
+      savedTheme = localStorage.getItem('theme');
+    } catch {
+      savedTheme = null;
+    }
+
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return savedTheme === 'dark' || (!savedTheme && prefersDark) ? 'dark' : 'light';
+  });
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = savedTheme === 'dark' || (!savedTheme && prefersDark)
-      ? 'dark'
-      : 'light';
-
-    setTheme(initialTheme);
-    document.documentElement.classList.toggle('dark', initialTheme === 'dark');
-  }, []);
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+  }, [theme]);
 
   const toggleTheme = () => {
     const nextTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(nextTheme);
-    localStorage.setItem('theme', nextTheme);
+    try {
+      localStorage.setItem('theme', nextTheme);
+    } catch {
+      // Ignore storage failures and keep the in-memory theme state.
+    }
     document.documentElement.classList.toggle('dark', nextTheme === 'dark');
   };
 

@@ -13,7 +13,7 @@ import {
 import { useCart } from '../useCart';
 import { LINK_NAMESPACES } from '../config/linkNamespaces';
 
-type PaymentMethod = 'card' | 'paypal' | 'zelle' | 'cashapp' | 'applepay';
+type PaymentMethod = 'card' | 'paypal' | 'zelle' | 'cashapp' | 'applepay' | 'googlewallet';
 
 export default function Checkout() {
   const { items, getTotal, clearCart } = useCart();
@@ -68,6 +68,9 @@ export default function Checkout() {
     }
     if (paymentMethod === 'applepay') {
       return 'Complete with Apple Pay';
+    }
+    if (paymentMethod === 'googlewallet') {
+      return 'Complete with Google Wallet';
     }
     return `Pay $${getTotal().toFixed(2)}`;
   };
@@ -349,6 +352,17 @@ export default function Checkout() {
                     >
                       Apple Pay
                     </button>
+                    <button
+                      type="button"
+                      onClick={() => setPaymentMethod('googlewallet')}
+                      className={`p-4 border-2 rounded-lg font-semibold transition-all ${
+                        paymentMethod === 'googlewallet'
+                          ? 'border-primary-600 bg-primary-50 text-primary-700'
+                          : 'border-gray-300 hover:border-gray-400'
+                      }`}
+                    >
+                      Google Wallet
+                    </button>
                   </div>
 
                   {/* Card Payment Form */}
@@ -442,6 +456,15 @@ export default function Checkout() {
                         namespace: payment-methods.applePayPhone
                         <br />
                         {LINK_NAMESPACES.paymentAccounts.applePayPhone}
+                      </p>
+                    </div>
+                  )}
+
+                  {paymentMethod === 'googlewallet' && (
+                    <div className="bg-sky-50 border border-sky-200 rounded-lg p-4 text-center">
+                      <p className="text-sky-900 mb-2 font-semibold">Google Wallet</p>
+                      <p className="text-sky-800 text-sm">
+                        Use Google Wallet checkout for saved cards and faster payment flow.
                       </p>
                     </div>
                   )}
