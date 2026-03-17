@@ -3,56 +3,52 @@
 
 # I Want My Lawyer Present - Merchandise Storefront
 
-A dynamic e-commerce platform for legal merchandise and products. Built with Next.js 15, React 18, TypeScript, and Tailwind CSS featuring a rich black color theme.
+Simple, content-driven storefront built with React, TypeScript, Vite, and Tailwind.
 
-## Features
+## Stack
 
-- 🛍️ **Merchandise Storefront** - Browse and purchase legal-themed products
-- 🎨 **Rich Dynamic Black Theme** - Sophisticated black and gold color scheme
-- 🛒 **Shopping Cart** - Full e-commerce functionality
-- 📦 **Product Catalog** - Organized product categories and search
-- 👤 **Customer Platform** - Account management and order tracking
-- 🔒 **Secure Checkout** - Protected payment processing
-- 📱 **Responsive Design** - Mobile-first approach
-- 🌙 **Dark/Light Mode** - Theme toggle support
+- React 19 + TypeScript
+- Vite 7
+- Tailwind CSS 4
+- Framer Motion + Lucide icons
+- Azure Static Web Apps + Azure Functions (`api/`)
 
+## Quick Start
 
-## Technology Stack
+```bash
+npm install
+npm run dev
+```
 
-- **Framework**: Next.js 15
-- **UI**: React 18, TypeScript
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **State Management**: React Context API
+Default local URL: `http://localhost:5173` (or next available port).
+
+## Scripts
+
+```bash
+npm run dev      # Start Vite dev server
+npm run lint     # Run ESLint
+npm run build    # Type-check + production build
+npm run preview  # Preview production build
+```
+
+## Repo Layout
+
+```text
+src/             # Main frontend app code
+components/      # Shared React components
+public/          # Static assets
+api/             # Azure Functions backend
+```
 
 ## Release Checklist
 
-Use this quick checklist before each production release:
-
 - [ ] `npm run lint` passes
 - [ ] `npm run build` passes
-- [ ] Checkout disclaimer is visible and accurate
-- [ ] Card method remains disabled unless a hosted processor URL is configured
-- [ ] No hardcoded admin credentials in client code
-- [ ] Admin sign-in, sign-out, and password rotation tested
-- [ ] Domain DNS resolves correctly for apex and `www`
-- [ ] HTTPS certificate is valid for all production domains
-- [ ] Test purchase flow completes using configured payment methods
-- [ ] Legal copy (Terms/Privacy/Disclaimer) matches actual data handling behavior
-
-## Project Structure
-
-```
-├── app/
-│   ├── shop/          # Storefront pages
-│   ├── account/       # Customer account
-│   └── checkout/      # Payment flow
-├── components/
-│   └── ui/           # Reusable components
-├── lib/              # Utilities
-└── public/           # Static assets
-```
+- [ ] Card checkout is disabled unless hosted processor URL is configured
+- [ ] Admin sign-in/sign-out and password rotation tested
+- [ ] Checkout + footer disclaimers match real payment data handling
+- [ ] Apex and `www` domains resolve correctly with valid HTTPS
 
 ## License
 
-MIT License - see LICENSE file for details
+MIT (see `LICENSE`)
