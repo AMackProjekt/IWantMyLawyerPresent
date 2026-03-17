@@ -8,6 +8,9 @@ const movementImages = [
   '/images/IMG_5701 (1).JPG',
   '/images/TShirt2.JPG',
   '/images/Womens-Tees.JPG',
+  '/images/Womens-Tees-2.JPG',
+  '/images/Womens-Tees-3.JPG',
+  '/images/Womens-Tees-4.JPG',
 ];
 
 const supportWays = [
@@ -102,11 +105,6 @@ export default function SupportMovement() {
             ))}
           </div>
 
-          <p className="text-center text-primary-100 text-sm">
-            Space-saving update: full gallery sets are now transformed into animated marketing reels in the
-            <a href="#video-clips" className="text-yellow-300 font-semibold ml-1 hover:text-yellow-200">Video Clips</a>
-            section.
-          </p>
         </motion.div>
       </div>
     </section>

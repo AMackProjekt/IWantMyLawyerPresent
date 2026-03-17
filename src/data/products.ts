@@ -67,4 +67,32 @@ export const products: Product[] = [
       men: ['S', 'M', 'L', 'XL'],
     },
   },
+  {
+    id: 'prod-010',
+    name: "Women's Tees - Street Edition",
+    description: 'Street-style women\'s tee with bold graphics and relaxed comfort for everyday wear.',
+    price: 29.99,
+    image: '/images/Womens-Tees-3.JPG',
+    category: 'merchandise',
+    inStock: true,
+    featured: false,
+    sizes: {
+      women: ['XS', 'S', 'M', 'L', 'XL', '2XL'],
+      men: ['S', 'M', 'L', 'XL'],
+    },
+  },
+  {
+    id: 'prod-011',
+    name: "Women's Tees - Bold Edition",
+    description: 'Premium women\'s tee featuring bold print styling and soft cotton blend comfort.',
+    price: 31.99,
+    image: '/images/Womens-Tees-4.JPG',
+    category: 'merchandise',
+    inStock: true,
+    featured: false,
+    sizes: {
+      women: ['XS', 'S', 'M', 'L', 'XL', '2XL'],
+      men: ['S', 'M', 'L', 'XL'],
+    },
+  },
 ];

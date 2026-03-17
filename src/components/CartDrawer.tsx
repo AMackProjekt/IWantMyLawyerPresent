@@ -6,6 +6,11 @@ import { useCart } from '../useCart';
 export default function CartDrawer() {
   const [open, setOpen] = useState(false);
   const { items, getItemCount, getTotal, updateQuantity, removeFromCart, clearCart } = useCart();
+  const subtotal = getTotal();
+  const tax = subtotal * 0.08;
+  const shipping = items.length > 0 ? 7.99 : 0;
+  const handling = items.length > 0 ? 2.49 : 0;
+  const grandTotal = subtotal + tax + shipping + handling;
 
   return (
     <>
@@ -40,7 +45,7 @@ export default function CartDrawer() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.25 }}
-              className="fixed top-0 right-0 z-70 h-full w-full max-w-md bg-white shadow-2xl flex flex-col"
+              className="fixed top-0 right-0 z-70 h-full w-full max-w-2xl bg-white shadow-2xl flex flex-col"
             >
               <div className="flex items-center justify-between p-5 border-b border-gray-200">
                 <h2 className="text-xl font-bold text-gray-900">Your Cart</h2>
@@ -58,19 +63,28 @@ export default function CartDrawer() {
                   <p className="text-gray-500">Your cart is empty.</p>
                 ) : (
                   items.map((item) => (
-                    <article key={item.product.id} className="border border-gray-200 rounded-lg p-3">
-                      <div className="flex gap-3">
+                    <article key={item.product.id} className="border border-gray-200 rounded-lg p-4">
+                      <div className="flex gap-4">
                         <img
                           src={item.product.image}
                           alt={item.product.name}
-                          className="w-16 h-16 rounded-md object-cover bg-gray-100"
+                          className="w-24 h-24 rounded-md object-cover bg-gray-100"
                           loading="lazy"
                         />
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-sm font-semibold text-gray-900 truncate">{item.product.name}</h3>
+                          <h3 className="text-base font-semibold text-gray-900 truncate">{item.product.name}</h3>
+                          <p className="text-sm text-gray-500 mt-1">Qty: {item.quantity}</p>
                           <p className="text-sm text-primary-700 font-bold mt-1">
                             ${item.product.price.toFixed(2)}
                           </p>
+                          <p className="text-sm text-gray-700 mt-1">
+                            Line Total: ${(item.product.price * item.quantity).toFixed(2)}
+                          </p>
+                          {item.product.sizes?.women && item.product.sizes.women.length > 0 && (
+                            <p className="text-xs text-gray-500 mt-1">
+                              Women's sizes: {item.product.sizes.women.join(', ')}
+                            </p>
+                          )}
 
                           <div className="mt-3 flex items-center justify-between">
                             <div className="inline-flex items-center border border-gray-300 rounded-md">
@@ -112,7 +126,23 @@ export default function CartDrawer() {
               <div className="border-t border-gray-200 p-5 space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-gray-600">Subtotal</span>
-                  <span className="text-xl font-bold text-gray-900">${getTotal().toFixed(2)}</span>
+                  <span className="text-base font-semibold text-gray-900">${subtotal.toFixed(2)}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-600">Tax (8%)</span>
+                  <span className="text-base font-semibold text-gray-900">${tax.toFixed(2)}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-600">Shipping</span>
+                  <span className="text-base font-semibold text-gray-900">${shipping.toFixed(2)}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-600">Handling</span>
+                  <span className="text-base font-semibold text-gray-900">${handling.toFixed(2)}</span>
+                </div>
+                <div className="flex items-center justify-between pt-2 border-t border-gray-200">
+                  <span className="text-gray-900 font-bold">Total</span>
+                  <span className="text-2xl font-bold text-gray-900">${grandTotal.toFixed(2)}</span>
                 </div>
 
                 <a
