@@ -11,7 +11,14 @@
     "JWT_SECRET": "your-secure-jwt-secret-minimum-32-characters",
     "COMMUNICATION_SERVICES_CONNECTION_STRING": "your-communication-services-connection",
     "SENDER_EMAIL": "noreply@mackprojekt.com",
-    "APPLICATIONINSIGHTS_CONNECTION_STRING": "your-app-insights-connection"
+    "APPLICATIONINSIGHTS_CONNECTION_STRING": "your-app-insights-connection",
+    "PASSKIT_WWDR_BASE64": "base64-encoded-apple-wwdr-cert",
+    "PASSKIT_SIGNER_CERT_BASE64": "base64-encoded-pass-type-certificate",
+    "PASSKIT_SIGNER_KEY_BASE64": "base64-encoded-pass-type-private-key",
+    "PASSKIT_SIGNER_KEY_PASSPHRASE": "certificate-key-passphrase-if-needed",
+    "PASSKIT_TEAM_IDENTIFIER": "YOURTEAMID",
+    "PASSKIT_PASS_TYPE_IDENTIFIER": "pass.com.example.knowyourrights",
+    "PASSKIT_ORGANIZATION_NAME": "T.O.O.L.S Inc"
   },
   "Host": {
     "LocalHttpPort": 7071,

@@ -2,6 +2,7 @@ import Navigation from './components/Navigation';
 import LaunchSpotlight from './components/LaunchSpotlight';
 import Hero from './components/Hero';
 import FounderBio from './components/FounderBio';
+import LegalRightsWalletCard from './components/LegalRightsWalletCard';
 import Shop from './components/Shop';
 import VideoClips from './components/VideoClips';
 import SupportMovement from './components/SupportMovement';
@@ -26,6 +27,7 @@ function App() {
             <LaunchSpotlight />
             <Hero />
             <FounderBio />
+            <LegalRightsWalletCard />
             <Shop />
             <VideoClips />
             <SupportMovement />

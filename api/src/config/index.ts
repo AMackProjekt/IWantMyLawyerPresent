@@ -24,6 +24,15 @@ export const config = {
     apiKey: process.env.MAILCHIMP_API_KEY || '',
     serverPrefix: process.env.MAILCHIMP_SERVER_PREFIX || 'us1',
     audienceId: process.env.MAILCHIMP_AUDIENCE_ID || ''
+  },
+  passkit: {
+    wwdrBase64: process.env.PASSKIT_WWDR_BASE64 || '',
+    signerCertBase64: process.env.PASSKIT_SIGNER_CERT_BASE64 || '',
+    signerKeyBase64: process.env.PASSKIT_SIGNER_KEY_BASE64 || '',
+    signerKeyPassphrase: process.env.PASSKIT_SIGNER_KEY_PASSPHRASE || '',
+    teamIdentifier: process.env.PASSKIT_TEAM_IDENTIFIER || '',
+    passTypeIdentifier: process.env.PASSKIT_PASS_TYPE_IDENTIFIER || '',
+    organizationName: process.env.PASSKIT_ORGANIZATION_NAME || 'T.O.O.L.S Inc'
   }
 };
 
