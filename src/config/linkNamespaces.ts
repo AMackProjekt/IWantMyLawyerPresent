@@ -1,6 +1,8 @@
 export const LINK_NAMESPACES = {
   // namespace: domain
   siteDomain: 'https://iwantmylawyerpresent.com',
+  siteDomainWww: 'https://www.iwantmylawyerpresent.com',
+  siteDomainShort: 'iwantmylawyerpresent',
 
   // namespace: social-links
   facebookPageUrl: 'https://www.facebook.com/YOUR_PAGE_HANDLE',

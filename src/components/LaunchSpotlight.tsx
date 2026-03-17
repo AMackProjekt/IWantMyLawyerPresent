@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import { Flame, PlayCircle, Sparkles } from 'lucide-react';
 import { LINK_NAMESPACES } from '../config/linkNamespaces';
+import { useSiteContent } from '../context/SiteContentContext';
 
 export default function LaunchSpotlight() {
+  const { content } = useSiteContent();
+
   const scrollToShop = () => {
     const section = document.getElementById('shop');
     section?.scrollIntoView({ behavior: 'smooth' });
@@ -12,7 +15,7 @@ export default function LaunchSpotlight() {
     <section className="relative min-h-screen pt-16 overflow-hidden bg-black text-white">
       <div className="absolute inset-0">
         <img
-          src={LINK_NAMESPACES.launchMedia.boldCoverImage}
+          src={content.media.launchCoverImage}
           alt="Bold cover launch visual"
           className="h-full w-full object-cover opacity-45"
         />
@@ -28,13 +31,13 @@ export default function LaunchSpotlight() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-400/50 bg-yellow-300/10 text-yellow-300 font-semibold mb-5">
               <Flame className="w-5 h-5" />
-              Coming Soon Drop
+              {content.launch.badge}
             </div>
 
             <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 uppercase tracking-tight">
-              Coming Soon
+              {content.launch.titleLine1}
               <br />
-              <span className="text-yellow-300">Launch Wave</span>
+              <span className="text-yellow-300">{content.launch.titleLine2}</span>
             </h1>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -42,13 +45,13 @@ export default function LaunchSpotlight() {
                 onClick={scrollToShop}
                 className="px-8 py-4 bg-yellow-400 text-black font-bold rounded-lg hover:bg-yellow-300 transition-all shadow-xl"
               >
-                Shop The Drop
+                {content.launch.primaryCta}
               </button>
               <a
                 href="#video-clips"
                 className="px-8 py-4 border-2 border-white/60 text-white font-bold rounded-lg hover:bg-white/10 transition-all text-center"
               >
-                Watch Clips
+                {content.launch.secondaryCta}
               </a>
             </div>
           </motion.div>
@@ -63,17 +66,17 @@ export default function LaunchSpotlight() {
               <div className="flex items-center justify-between px-4 py-3 border-b border-white/15">
                 <div className="inline-flex items-center gap-2 text-yellow-300 font-semibold">
                   <PlayCircle className="w-5 h-5" />
-                  Dynamic Book Launch Video
+                  {content.launch.videoTitle}
                 </div>
                 <div className="inline-flex items-center gap-1 text-xs uppercase tracking-wide text-gray-300">
                   <Sparkles className="w-4 h-4" />
-                  Book Cover Feature
+                  {content.launch.videoTag}
                 </div>
               </div>
 
               <video
                 className="w-full aspect-video object-cover"
-                poster={LINK_NAMESPACES.launchMedia.bookCoverImage}
+                poster={content.media.launchPosterImage}
                 autoPlay
                 muted
                 loop
@@ -81,14 +84,14 @@ export default function LaunchSpotlight() {
                 controls
                 preload="metadata"
               >
-                <source src={LINK_NAMESPACES.launchMedia.comingSoonVideo} type="video/mp4" />
+                <source src={content.media.launchPrimaryVideo} type="video/mp4" />
               </video>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-xl overflow-hidden border border-white/20 bg-black/40">
                 <img
-                  src={LINK_NAMESPACES.launchMedia.bookCoverImage}
+                  src={content.media.bookCoverImage}
                   alt="Book cover preview"
                   className="w-full h-full object-cover"
                 />
@@ -102,7 +105,7 @@ export default function LaunchSpotlight() {
                   playsInline
                   preload="metadata"
                 >
-                  <source src={LINK_NAMESPACES.launchMedia.secondaryLaunchVideo} type="video/mp4" />
+                  <source src={content.media.launchSecondaryVideo} type="video/mp4" />
                 </video>
               </div>
             </div>

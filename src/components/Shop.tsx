@@ -4,9 +4,11 @@ import { ShoppingCart } from 'lucide-react';
 import { products } from '../data/products';
 import { useCart } from '../useCart';
 import type { Product } from '../types/product';
+import { useSiteContent } from '../context/SiteContentContext';
 
 export default function Shop() {
   const { addToCart } = useCart();
+  const { content } = useSiteContent();
 
   const handleAddToCart = (product: Product) => {
     addToCart(product);
@@ -26,14 +28,14 @@ export default function Shop() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            Official Storefront
+            {content.shop.sectionTitle}
           </h2>
         </motion.div>
 
         {/* Featured Products */}
         <div className="mb-12">
           <h3 className="text-2xl font-bold text-gray-900 mb-6">
-            Featured Products
+            {content.shop.featuredTitle}
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProducts.map((product, index) => (
@@ -50,7 +52,7 @@ export default function Shop() {
         {/* All Products */}
         <div>
           <h3 className="text-2xl font-bold text-gray-900 mb-6">
-            All Products
+            {content.shop.allTitle}
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {allProducts.map((product, index) => (

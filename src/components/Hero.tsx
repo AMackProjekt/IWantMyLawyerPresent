@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Scale, Shield } from 'lucide-react';
+import { useSiteContent } from '../context/SiteContentContext';
 
 export default function Hero() {
+  const { content } = useSiteContent();
+
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
     section?.scrollIntoView({ behavior: 'smooth' });
@@ -34,15 +37,15 @@ export default function Hero() {
             </motion.div>
 
             <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Premium Gear.
+              {content.hero.line1}
               <br />
-              Bold Message.
+              {content.hero.line2}
               <br />
-              <span className="text-yellow-400">Official Storefront.</span>
+              <span className="text-yellow-400">{content.hero.highlight}</span>
             </h1>
 
             <p className="text-xl sm:text-2xl text-blue-100 mb-8 leading-relaxed">
-              Apparel, accessories, and digital drops from I Want My Lawyer Present.
+              {content.hero.subtitle}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -50,13 +53,13 @@ export default function Hero() {
                 onClick={() => scrollToSection('shop')}
                 className="px-8 py-4 bg-yellow-400 text-primary-900 font-semibold rounded-lg text-lg hover:bg-yellow-300 transform hover:scale-105 transition-all shadow-lg"
               >
-                Shop The Storefront
+                {content.hero.primaryCta}
               </button>
               <button
                 onClick={() => scrollToSection('support')}
                 className="px-8 py-4 bg-white/10 backdrop-blur text-white font-semibold rounded-lg text-lg hover:bg-white/20 transform hover:scale-105 transition-all border-2 border-white/30"
               >
-                View Merch Gallery
+                {content.hero.secondaryCta}
               </button>
             </div>
           </motion.div>
@@ -73,18 +76,18 @@ export default function Hero() {
               <div className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
                 <div className="space-y-6">
                   <StatCard
-                    number="30+"
-                    label="Merch Variations"
+                    number={content.hero.stat1Number}
+                    label={content.hero.stat1Label}
                     delay={0.5}
                   />
                   <StatCard
-                    number="24/7"
-                    label="Secure Checkout Access"
+                    number={content.hero.stat2Number}
+                    label={content.hero.stat2Label}
                     delay={0.7}
                   />
                   <StatCard
-                    number="4+"
-                    label="Payment Methods"
+                    number={content.hero.stat3Number}
+                    label={content.hero.stat3Label}
                     delay={0.9}
                   />
                 </div>

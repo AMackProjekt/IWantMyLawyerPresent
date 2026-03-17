@@ -1,7 +1,9 @@
 import { Scale, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import { LINK_NAMESPACES } from '../config/linkNamespaces';
+import { useSiteContent } from '../context/SiteContentContext';
 
 export default function Footer() {
+  const { content } = useSiteContent();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -12,11 +14,10 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Scale className="w-8 h-8 text-yellow-400" />
-              <span className="text-xl font-bold">I Want My Lawyer</span>
+              <span className="text-xl font-bold">{content.footer.brandTitle}</span>
             </div>
             <p className="text-gray-400 text-sm">
-              Official storefront for I Want My Lawyer Present apparel,
-              accessories, and digital drops.
+              {content.footer.brandDescription}
             </p>
           </div>
 
@@ -112,16 +113,27 @@ export default function Footer() {
               </a>
             </div>
             <p className="text-gray-400 text-sm">
-              Official Domain:
+              Official Domains:
               <br />
               <a
-                href={LINK_NAMESPACES.siteDomain}
+                href={content.domains.primary}
                 target="_blank"
                 rel="noreferrer"
                 className="text-yellow-400 font-semibold"
               >
-                iwantmylawyerpresent.com
+                {content.domains.primary.replace('https://', '')}
               </a>
+              <br />
+              <a
+                href={content.domains.www}
+                target="_blank"
+                rel="noreferrer"
+                className="text-yellow-300 font-semibold"
+              >
+                {content.domains.www.replace('https://', '')}
+              </a>
+              <br />
+              <span className="text-gray-500">{content.domains.short}</span>
             </p>
           </div>
         </div>
@@ -130,7 +142,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © {currentYear} I Want My Lawyer Present. All rights reserved.
+              © {currentYear} {content.footer.legalNote}
             </p>
             <div className="flex flex-col items-center md:items-end gap-2">
               <a

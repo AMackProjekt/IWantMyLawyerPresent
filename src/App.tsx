@@ -8,24 +8,34 @@ import SupportMovement from './components/SupportMovement';
 import Checkout from './components/Checkout';
 import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
+import AdminEditor from './components/AdminEditor';
 import { CartProvider } from './CartProvider';
+import { SiteContentProvider } from './context/SiteContentContext';
 
 function App() {
+  const isAdminRoute = typeof window !== 'undefined' && window.location.pathname.toLowerCase().startsWith('/admin');
+
   return (
-    <CartProvider>
-      <div className="min-h-screen">
-        <Navigation />
-        <LaunchSpotlight />
-        <Hero />
-        <FounderBio />
-        <Shop />
-        <VideoClips />
-        <SupportMovement />
-        <Checkout />
-        <CallToAction />
-        <Footer />
-      </div>
-    </CartProvider>
+    <SiteContentProvider>
+      {isAdminRoute ? (
+        <AdminEditor />
+      ) : (
+        <CartProvider>
+          <div className="min-h-screen">
+            <Navigation />
+            <LaunchSpotlight />
+            <Hero />
+            <FounderBio />
+            <Shop />
+            <VideoClips />
+            <SupportMovement />
+            <Checkout />
+            <CallToAction />
+            <Footer />
+          </div>
+        </CartProvider>
+      )}
+    </SiteContentProvider>
   );
 }
 

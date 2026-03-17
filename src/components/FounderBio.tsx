@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Award, BookOpen, Users, Heart } from 'lucide-react';
+import { useSiteContent } from '../context/SiteContentContext';
 
 export default function FounderBio() {
+  const { content } = useSiteContent();
+
   return (
     <section id="about" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="section-container">
@@ -23,16 +26,16 @@ export default function FounderBio() {
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/images/FoundersProfile.JPG"
+                  src={content.media.founderProfileImage}
                   alt="Brian Mason"
                   className="aspect-[3/4] w-full object-cover"
                   loading="lazy"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                   <h3 className="text-2xl font-bold text-white mb-1">
-                    Brian Mason
+                    {content.founder.name}
                   </h3>
-                  <p className="text-blue-200">Founder / Creative Director</p>
+                  <p className="text-blue-200">{content.founder.role}</p>
                 </div>
               </div>
             </motion.div>
@@ -47,36 +50,23 @@ export default function FounderBio() {
               <div className="flex items-center gap-3 mb-4">
                 <Award className="w-8 h-8 text-yellow-500" />
                 <span className="text-primary-600 font-semibold text-lg">
-                  Brand Story
+                  {content.founder.storyLabel}
                 </span>
               </div>
 
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Built To Be Worn. Built To Be Seen.
+                {content.founder.headline}
               </h2>
 
               <div className="space-y-4 text-gray-700 leading-relaxed">
-                <p>
-                  I Want My Lawyer Present is a statement brand built around
-                  bold design, conversation-starting apparel, and quality-first
-                  drops that represent confidence and identity.
-                </p>
+                <p>{content.founder.paragraph1}</p>
 
-                <p>
-                  Brian Mason leads the creative direction, product curation,
-                  and launch strategy behind each release, keeping every piece
-                  clean, wearable, and instantly recognizable.
-                </p>
+                <p>{content.founder.paragraph2}</p>
 
-                <p>
-                  From signature tees to digital wallet products, the storefront
-                  is designed to make checkout easy while giving customers a
-                  premium experience from first click to delivery.
-                </p>
+                <p>{content.founder.paragraph3}</p>
 
                 <p className="font-semibold text-primary-700">
-                  "The goal is simple: release products people actually want to
-                  wear, and make every launch feel like an event."
+                  {content.founder.quote}
                 </p>
               </div>
 
@@ -130,14 +120,14 @@ export default function FounderBio() {
               >
                 <div className="bg-gradient-to-r from-primary-700 via-primary-600 to-blue-600 px-5 py-3">
                   <p className="text-xs font-mono tracking-wide text-white/90">
-                    namespace: L.W.O.P
+                    namespace: {content.bookLaunch.namespace}
                   </p>
                 </div>
 
                 <div className="grid gap-5 p-5 md:grid-cols-[160px_1fr]">
                   <div className="rounded-xl border border-primary-100 bg-gray-50 p-2">
                     <img
-                      src="/images/Book%20Cover.JPG"
+                      src={content.media.bookCoverImage}
                       alt="Founder book cover"
                       className="h-full w-full rounded-lg object-cover"
                       loading="lazy"
@@ -146,24 +136,24 @@ export default function FounderBio() {
 
                   <div>
                     <h3 className="text-2xl font-bold text-primary-900">
-                      Founder Book Launch
+                      {content.bookLaunch.title}
                     </h3>
                     <p className="mt-2 text-primary-700">
-                      Upcoming release details, pre-order link, launch date, and media kit assets will be published here.
+                      {content.bookLaunch.description}
                     </p>
 
                     <div className="mt-4 grid gap-3 sm:grid-cols-3">
                       <div className="rounded-lg border border-primary-100 bg-primary-50 px-3 py-2">
                         <p className="text-xs uppercase tracking-wide text-primary-700">Launch Date</p>
-                        <p className="text-sm font-semibold text-primary-900">Coming Soon</p>
+                        <p className="text-sm font-semibold text-primary-900">{content.bookLaunch.launchDate}</p>
                       </div>
                       <div className="rounded-lg border border-primary-100 bg-primary-50 px-3 py-2">
                         <p className="text-xs uppercase tracking-wide text-primary-700">Pre-Order</p>
-                        <p className="text-sm font-semibold text-primary-900">Opening Soon</p>
+                        <p className="text-sm font-semibold text-primary-900">{content.bookLaunch.preOrderStatus}</p>
                       </div>
                       <div className="rounded-lg border border-primary-100 bg-primary-50 px-3 py-2">
                         <p className="text-xs uppercase tracking-wide text-primary-700">Media Kit</p>
-                        <p className="text-sm font-semibold text-primary-900">Press Assets Pending</p>
+                        <p className="text-sm font-semibold text-primary-900">{content.bookLaunch.mediaKitStatus}</p>
                       </div>
                     </div>
 
@@ -173,14 +163,14 @@ export default function FounderBio() {
                         disabled
                         className="rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white opacity-70"
                       >
-                        Pre-Order Link Coming Soon
+                        {content.bookLaunch.preOrderButton}
                       </button>
                       <button
                         type="button"
                         disabled
                         className="rounded-lg border border-primary-300 bg-white px-4 py-2 text-sm font-semibold text-primary-700 opacity-70"
                       >
-                        Download Media Kit (Soon)
+                        {content.bookLaunch.mediaKitButton}
                       </button>
                     </div>
                   </div>

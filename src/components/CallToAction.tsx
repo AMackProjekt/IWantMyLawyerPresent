@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Phone, Mail, FileText, Shield } from 'lucide-react';
+import { useSiteContent } from '../context/SiteContentContext';
 
 export default function CallToAction() {
+  const { content } = useSiteContent();
+
   return (
     <section id="contact" className="py-20 gradient-bg">
       <div className="section-container">
@@ -13,40 +16,39 @@ export default function CallToAction() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            Let's Build Your Order
+            {content.contact.heading}
           </h2>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-            Need help with sizing, bulk orders, or custom bundles? Reach out
-            and we will get back to you.
+            {content.contact.subheading}
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <ActionCard
             icon={<Phone className="w-8 h-8" />}
-            title="Order Support"
-            description="Get quick help with order updates and checkout questions"
+            title={content.contact.card1Title}
+            description={content.contact.card1Description}
             link="#"
             delay={0.1}
           />
           <ActionCard
             icon={<Mail className="w-8 h-8" />}
-            title="Wholesale Inquiries"
-            description="Ask about bulk pricing for teams, events, and partners"
+            title={content.contact.card2Title}
+            description={content.contact.card2Description}
             link="#"
             delay={0.2}
           />
           <ActionCard
             icon={<FileText className="w-8 h-8" />}
-            title="Size + Fit Guide"
-            description="Get recommendations before placing your order"
+            title={content.contact.card3Title}
+            description={content.contact.card3Description}
             link="#"
             delay={0.3}
           />
           <ActionCard
             icon={<Shield className="w-8 h-8" />}
-            title="Secure Orders"
-            description="Protected checkout with multiple payment options"
+            title={content.contact.card4Title}
+            description={content.contact.card4Description}
             link="#"
             delay={0.4}
           />
@@ -61,7 +63,7 @@ export default function CallToAction() {
           className="max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-2xl"
         >
           <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Contact The Storefront Team
+            {content.contact.formTitle}
           </h3>
           <form className="space-y-4">
             <div className="grid md:grid-cols-2 gap-4">

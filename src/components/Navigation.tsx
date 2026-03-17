@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Scale, Menu, X, Sun, Moon } from 'lucide-react';
 import CartDrawer from './CartDrawer';
+import { useSiteContent } from '../context/SiteContentContext';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const { content } = useSiteContent();
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     if (typeof window === 'undefined') {
       return 'light';
@@ -37,13 +39,13 @@ export default function Navigation() {
   };
 
   const navItems = [
-    { label: 'Home', href: '#' },
-    { label: 'Shop', href: '#shop' },
-    { label: 'Video Clips', href: '#video-clips' },
-    { label: 'Gallery', href: '#support' },
-    { label: 'Checkout', href: '#checkout' },
-    { label: 'About', href: '#about' },
-    { label: 'Contact', href: '#contact' },
+    { label: content.navigation.home, href: '#' },
+    { label: content.navigation.shop, href: '#shop' },
+    { label: content.navigation.videoClips, href: '#video-clips' },
+    { label: content.navigation.gallery, href: '#support' },
+    { label: content.navigation.checkout, href: '#checkout' },
+    { label: content.navigation.about, href: '#about' },
+    { label: content.navigation.contact, href: '#contact' },
   ];
 
   return (
@@ -54,7 +56,7 @@ export default function Navigation() {
           <a href="#" className="flex items-center gap-2 group">
             <Scale className="w-8 h-8 text-yellow-400 group-hover:rotate-12 transition-transform" />
             <span className="text-white font-bold text-lg hidden sm:block">
-              I want My Lawyer Present
+              {content.brandName}
             </span>
           </a>
 
@@ -85,7 +87,7 @@ export default function Navigation() {
               href="#shop"
               className="px-6 py-2 bg-yellow-400 text-primary-900 font-semibold rounded-lg hover:bg-yellow-300 transition-all"
             >
-              Shop Now
+              {content.navShopCta}
             </a>
           </div>
 
@@ -128,7 +130,7 @@ export default function Navigation() {
                     onClick={() => setIsOpen(false)}
                     className="px-6 py-3 bg-yellow-400 text-primary-900 font-semibold rounded-lg hover:bg-yellow-300 transition-all flex-1 mr-2 text-center"
                   >
-                    Shop Now
+                    {content.navShopCta}
                   </a>
                   <button
                     onClick={toggleTheme}
