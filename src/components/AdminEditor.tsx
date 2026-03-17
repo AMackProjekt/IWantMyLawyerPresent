@@ -9,20 +9,18 @@ type AdminAuth = {
   password: string;
 };
 
-function readAdminAuth(): AdminAuth {
+function readAdminAuth(): AdminAuth | null {
   if (typeof window === 'undefined') {
-    return { username: 'admin', password: 'LWOP2026!' };
+    return null;
   }
   try {
     const raw = window.localStorage.getItem(AUTH_STORAGE_KEY);
     if (!raw) {
-      const defaults = { username: 'admin', password: 'LWOP2026!' };
-      window.localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(defaults));
-      return defaults;
+      return null;
     }
     return JSON.parse(raw) as AdminAuth;
   } catch {
-    return { username: 'admin', password: 'LWOP2026!' };
+    return null;
   }
 }
 
@@ -116,9 +114,12 @@ function SectionCard({ title, children }: { title: string; children: React.React
 
 export default function AdminEditor() {
   const { content, setContent, resetContent } = useSiteContent();
-  const [auth] = useState<AdminAuth>(readAdminAuth);
+  const [auth, setAuth] = useState<AdminAuth | null>(readAdminAuth);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [setupUsername, setSetupUsername] = useState('');
+  const [setupPassword, setSetupPassword] = useState('');
+  const [setupConfirmPassword, setSetupConfirmPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
   const [loginError, setLoginError] = useState('');
   const [authNotice, setAuthNotice] = useState('');
@@ -129,12 +130,45 @@ export default function AdminEditor() {
 
   const handleLogin = (event: React.FormEvent) => {
     event.preventDefault();
+    if (!auth) {
+      setLoginError('Create admin credentials before signing in.');
+      return;
+    }
     if (username === auth.username && password === auth.password) {
       setLoggedIn(true);
       setLoginError('');
       return;
     }
     setLoginError('Invalid login. Please use the handoff credentials.');
+  };
+
+  const handleCreateAdmin = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!setupUsername.trim() || !setupPassword.trim()) {
+      setLoginError('Username and password are required.');
+      return;
+    }
+    if (setupPassword !== setupConfirmPassword) {
+      setLoginError('Passwords do not match.');
+      return;
+    }
+
+    const nextAuth = { username: setupUsername.trim(), password: setupPassword.trim() };
+    saveAdminAuth(nextAuth);
+    setAuth(nextAuth);
+    setSetupPassword('');
+    setSetupConfirmPassword('');
+    setPassword('');
+    setUsername(nextAuth.username);
+    setLoginError('Admin credentials created. Sign in to continue.');
+  };
+
+  const handleSignOut = () => {
+    setLoggedIn(false);
+    setUsername('');
+    setPassword('');
+    setLoginError('');
+    setAuthNotice('');
   };
 
   const updateContent = (updater: (current: SiteContent) => SiteContent) => {
@@ -167,8 +201,13 @@ export default function AdminEditor() {
       setAuthNotice('Enter a new password before updating login credentials.');
       return;
     }
+    if (!auth) {
+      setAuthNotice('Create admin credentials first.');
+      return;
+    }
     const nextAuth = { username: auth.username, password: newPassword.trim() };
     saveAdminAuth(nextAuth);
+    setAuth(nextAuth);
     setAuthNotice('Password updated and saved locally for this site.');
     setNewPassword('');
   };
@@ -180,24 +219,40 @@ export default function AdminEditor() {
           <h1 className="text-3xl font-bold text-slate-900">Admin Editor</h1>
           <p className="mt-2 text-sm text-slate-600">Website handoff console for content edits and updates.</p>
 
-          <div className="mt-6 rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
-            <p className="font-semibold">Login Information</p>
-            <p>Username: admin</p>
-            <p>Password: LWOP2026!</p>
-            <p className="mt-2 text-xs">Change this password after first sign-in.</p>
-          </div>
-
-          <form className="mt-6 space-y-4" onSubmit={handleLogin}>
-            <TextField label="Username" value={username} onChange={setUsername} />
-            <TextField label="Password" value={password} onChange={setPassword} />
-            {loginError ? <p className="text-sm text-red-600">{loginError}</p> : null}
-            <button
-              type="submit"
-              className="w-full rounded-lg bg-slate-900 px-4 py-3 font-semibold text-white hover:bg-slate-800"
-            >
-              Sign In
-            </button>
-          </form>
+          {!auth ? (
+            <form className="mt-6 space-y-4" onSubmit={handleCreateAdmin}>
+              <div className="rounded-lg border border-blue-300 bg-blue-50 p-4 text-sm text-blue-900">
+                <p className="font-semibold">First-Time Setup</p>
+                <p>Create admin credentials for this browser. No default password is shipped in code.</p>
+              </div>
+              <TextField label="Admin Username" value={setupUsername} onChange={setSetupUsername} />
+              <TextField label="Admin Password" value={setupPassword} onChange={setSetupPassword} />
+              <TextField
+                label="Confirm Password"
+                value={setupConfirmPassword}
+                onChange={setSetupConfirmPassword}
+              />
+              {loginError ? <p className="text-sm text-red-600">{loginError}</p> : null}
+              <button
+                type="submit"
+                className="w-full rounded-lg bg-slate-900 px-4 py-3 font-semibold text-white hover:bg-slate-800"
+              >
+                Create Admin Credentials
+              </button>
+            </form>
+          ) : (
+            <form className="mt-6 space-y-4" onSubmit={handleLogin}>
+              <TextField label="Username" value={username} onChange={setUsername} />
+              <TextField label="Password" value={password} onChange={setPassword} />
+              {loginError ? <p className="text-sm text-red-600">{loginError}</p> : null}
+              <button
+                type="submit"
+                className="w-full rounded-lg bg-slate-900 px-4 py-3 font-semibold text-white hover:bg-slate-800"
+              >
+                Sign In
+              </button>
+            </form>
+          )}
         </div>
       </main>
     );
@@ -234,6 +289,13 @@ export default function AdminEditor() {
               className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700"
             >
               Copy JSON
+            </button>
+            <button
+              type="button"
+              onClick={handleSignOut}
+              className="rounded-lg border border-red-300 bg-red-50 px-4 py-2 text-sm font-semibold text-red-700 hover:bg-red-100"
+            >
+              Sign Out
             </button>
           </div>
           {authNotice ? <p className="mt-3 text-sm text-blue-700">{authNotice}</p> : null}

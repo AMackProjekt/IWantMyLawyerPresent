@@ -161,6 +161,11 @@ export default function Footer() {
                 Product details, pricing, and availability may change without
                 notice. Please review your order before submitting payment.
               </p>
+              <p className="text-gray-500 text-xs max-w-2xl text-center md:text-right">
+                Payment details are handled by secure providers. This site does
+                not retain or store full credit/debit card numbers, CVV, or
+                card expiration data.
+              </p>
             </div>
           </div>
         </div>

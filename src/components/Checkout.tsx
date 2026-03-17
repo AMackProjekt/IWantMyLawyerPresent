@@ -17,7 +17,11 @@ type PaymentMethod = 'card' | 'paypal' | 'zelle' | 'cashapp' | 'applepay' | 'goo
 
 export default function Checkout() {
   const { items, getTotal, clearCart } = useCart();
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('card');
+  const cardPaymentsEnabled =
+    LINK_NAMESPACES.paymentAccounts.cardProcessorCheckoutUrl.trim().length > 0;
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>(
+    cardPaymentsEnabled ? 'card' : 'paypal',
+  );
   const [processing, setProcessing] = useState(false);
   const [success, setSuccess] = useState(false);
   const [purchasedItemIds, setPurchasedItemIds] = useState<string[]>([]);
@@ -44,6 +48,11 @@ export default function Checkout() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (paymentMethod === 'card' && !cardPaymentsEnabled) {
+      return;
+    }
+
     setProcessing(true);
 
     // Simulate payment processing
@@ -298,7 +307,8 @@ export default function Checkout() {
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
                     <button
                       type="button"
-                      onClick={() => setPaymentMethod('card')}
+                      onClick={() => cardPaymentsEnabled && setPaymentMethod('card')}
+                      disabled={!cardPaymentsEnabled}
                       className={`p-4 border-2 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 ${
                         paymentMethod === 'card'
                           ? 'border-primary-600 bg-primary-50 text-primary-700'
@@ -306,7 +316,7 @@ export default function Checkout() {
                       }`}
                     >
                       <CreditCard className="w-5 h-5" />
-                      Credit/Debit Card
+                      {cardPaymentsEnabled ? 'Credit/Debit Card' : 'Card (Unavailable)'}
                     </button>
                     <button
                       type="button"
@@ -366,7 +376,7 @@ export default function Checkout() {
                   </div>
 
                   {/* Card Payment Form */}
-                  {paymentMethod === 'card' && (
+                  {paymentMethod === 'card' && cardPaymentsEnabled && (
                     <div className="space-y-4">
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -412,6 +422,15 @@ export default function Checkout() {
                           />
                         </div>
                       </div>
+                    </div>
+                  )}
+
+                  {paymentMethod === 'card' && !cardPaymentsEnabled && (
+                    <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 text-center">
+                      <p className="text-amber-900 mb-2 font-semibold">Card Checkout Not Configured</p>
+                      <p className="text-amber-900 text-sm">
+                        Card entry is disabled until a secure hosted card processor URL is configured.
+                      </p>
                     </div>
                   )}
 
@@ -485,8 +504,9 @@ export default function Checkout() {
                   <div className="text-sm text-green-800">
                     <p className="font-semibold mb-1">Secure Payment</p>
                     <p>
-                      Your payment information is encrypted and secure. We never
-                      store your card details.
+                      Your payment information is encrypted in transit and handled
+                      by secure payment providers. This site does not retain or
+                      store credit/debit card numbers, CVV, or expiration data.
                     </p>
                   </div>
                 </div>
@@ -551,6 +571,13 @@ export default function Checkout() {
                   <p>
                     By completing this purchase, you agree to our Terms of
                     Service and Privacy Policy.
+                  </p>
+                </div>
+                <div className="mt-3 flex items-start gap-2 text-xs text-gray-500">
+                  <Lock className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                  <p>
+                    Card data is processed securely by payment providers. This
+                    site does not retain or store credit/debit card details.
                   </p>
                 </div>
               </div>

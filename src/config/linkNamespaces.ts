@@ -10,6 +10,7 @@ export const LINK_NAMESPACES = {
 
   // namespace: payment-methods
   paymentAccounts: {
+    cardProcessorCheckoutUrl: '',
     paypalMeUrl: 'https://www.paypal.com/paypalme/YOUR_HANDLE',
     zelleHandle: 'zelle@iwantmylawyerpresent.com',
     cashAppTag: '$YOURCASHTAG',

@@ -1,4 +1,5 @@
-import { createContext, useContext, useMemo, useState } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useState } from 'react';
 import { defaultSiteContent, type SiteContent } from '../content/siteContent';
 
 const STORAGE_KEY = 'iwmlp.siteContent.v1';
@@ -48,10 +49,7 @@ export function SiteContentProvider({ children }: { children: React.ReactNode })
     setContent(defaultSiteContent);
   };
 
-  const ctxValue = useMemo(
-    () => ({ content: contentState, setContent, patchContent, resetContent }),
-    [contentState],
-  );
+  const ctxValue = { content: contentState, setContent, patchContent, resetContent };
 
   return <SiteContentContext.Provider value={ctxValue}>{children}</SiteContentContext.Provider>;
 }

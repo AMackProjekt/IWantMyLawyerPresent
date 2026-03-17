@@ -39,6 +39,21 @@ Open [http://localhost:3000](http://localhost:3000) to view the storefront.
 - **Animations**: Framer Motion
 - **State Management**: React Context API
 
+## Release Checklist
+
+Use this quick checklist before each production release:
+
+- [ ] `npm run lint` passes
+- [ ] `npm run build` passes
+- [ ] Checkout disclaimer is visible and accurate
+- [ ] Card method remains disabled unless a hosted processor URL is configured
+- [ ] No hardcoded admin credentials in client code
+- [ ] Admin sign-in, sign-out, and password rotation tested
+- [ ] Domain DNS resolves correctly for apex and `www`
+- [ ] HTTPS certificate is valid for all production domains
+- [ ] Test purchase flow completes using configured payment methods
+- [ ] Legal copy (Terms/Privacy/Disclaimer) matches actual data handling behavior
+
 ## Project Structure
 
 ```

@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Flame, PlayCircle, Sparkles } from 'lucide-react';
-import { LINK_NAMESPACES } from '../config/linkNamespaces';
 import { useSiteContent } from '../context/SiteContentContext';
 
 export default function LaunchSpotlight() {
