@@ -1,3 +1,6 @@
+<img width="2157" height="1078" alt="Screenshot 2026-03-17 124551" src="https://github.com/user-attachments/assets/cc78bcb2-75e2-4eaf-82e4-2351fd62acda" />
+
+
 # I Want My Lawyer Present - Merchandise Storefront
 
 A dynamic e-commerce platform for legal merchandise and products. Built with Next.js 15, React 18, TypeScript, and Tailwind CSS featuring a rich black color theme.
@@ -13,23 +16,6 @@ A dynamic e-commerce platform for legal merchandise and products. Built with Nex
 - 📱 **Responsive Design** - Mobile-first approach
 - 🌙 **Dark/Light Mode** - Theme toggle support
 
-## Quick Start
-
-```bash
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-```
-
-Open [http://localhost:3000](http://localhost:3000) to view the storefront.
 
 ## Technology Stack
 
