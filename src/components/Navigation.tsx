@@ -54,7 +54,7 @@ export default function Navigation() {
           <a href="#" className="flex items-center gap-2 group">
             <Scale className="w-8 h-8 text-yellow-400 group-hover:rotate-12 transition-transform" />
             <span className="text-white font-bold text-lg hidden sm:block">
-              I Want My Lawyer
+              I want My Lawyer Present
             </span>
           </a>
 
