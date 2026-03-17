@@ -126,18 +126,65 @@ export default function FounderBio() {
 
               <div
                 id="book-launch"
-                className="mt-8 rounded-xl border-2 border-dashed border-primary-300 bg-primary-50 p-5"
+                className="mt-8 overflow-hidden rounded-2xl border border-primary-200 bg-white shadow-lg"
               >
-                <p className="text-xs font-mono text-primary-700 mb-2">
-                  namespace: founders-book-launch
-                </p>
-                <h3 className="text-xl font-bold text-primary-900 mb-1">
-                  Founder Book Launch Placeholder
-                </h3>
-                <p className="text-primary-700">
-                  Upcoming release details, pre-order link, launch date, and
-                  media kit will be published here.
-                </p>
+                <div className="bg-gradient-to-r from-primary-700 via-primary-600 to-blue-600 px-5 py-3">
+                  <p className="text-xs font-mono tracking-wide text-white/90">
+                    namespace: L.W.O.P
+                  </p>
+                </div>
+
+                <div className="grid gap-5 p-5 md:grid-cols-[160px_1fr]">
+                  <div className="rounded-xl border border-primary-100 bg-gray-50 p-2">
+                    <img
+                      src="/images/Book%20Cover.JPG"
+                      alt="Founder book cover"
+                      className="h-full w-full rounded-lg object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div>
+                    <h3 className="text-2xl font-bold text-primary-900">
+                      Founder Book Launch
+                    </h3>
+                    <p className="mt-2 text-primary-700">
+                      Upcoming release details, pre-order link, launch date, and media kit assets will be published here.
+                    </p>
+
+                    <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                      <div className="rounded-lg border border-primary-100 bg-primary-50 px-3 py-2">
+                        <p className="text-xs uppercase tracking-wide text-primary-700">Launch Date</p>
+                        <p className="text-sm font-semibold text-primary-900">Coming Soon</p>
+                      </div>
+                      <div className="rounded-lg border border-primary-100 bg-primary-50 px-3 py-2">
+                        <p className="text-xs uppercase tracking-wide text-primary-700">Pre-Order</p>
+                        <p className="text-sm font-semibold text-primary-900">Opening Soon</p>
+                      </div>
+                      <div className="rounded-lg border border-primary-100 bg-primary-50 px-3 py-2">
+                        <p className="text-xs uppercase tracking-wide text-primary-700">Media Kit</p>
+                        <p className="text-sm font-semibold text-primary-900">Press Assets Pending</p>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      <button
+                        type="button"
+                        disabled
+                        className="rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white opacity-70"
+                      >
+                        Pre-Order Link Coming Soon
+                      </button>
+                      <button
+                        type="button"
+                        disabled
+                        className="rounded-lg border border-primary-300 bg-white px-4 py-2 text-sm font-semibold text-primary-700 opacity-70"
+                      >
+                        Download Media Kit (Soon)
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
