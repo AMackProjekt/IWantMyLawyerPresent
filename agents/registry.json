@@ -1,0 +1,61 @@
+{
+  "generatedBy": "scripts/auto-update-agents.mjs",
+  "generatedAtUtc": "2026-03-17T03:13:53.448Z",
+  "agents": [
+    {
+      "id": "api",
+      "name": "Azure Functions API Engineer",
+      "purpose": "Implement functions, request validation, errors, and a sample resource.",
+      "file": "agents/api.json",
+      "autoUpdate": {
+        "enabled": true,
+        "cadence": "weekly",
+        "owner": "github-actions-bot"
+      }
+    },
+    {
+      "id": "architect",
+      "name": "Azure Backend Architect",
+      "purpose": "Define SWA API architecture, routing, auth, and data approach for Azure.",
+      "file": "agents/architect.json",
+      "autoUpdate": {
+        "enabled": true,
+        "cadence": "weekly",
+        "owner": "github-actions-bot"
+      }
+    },
+    {
+      "id": "data",
+      "name": "Azure Data Engineer",
+      "purpose": "Select and wire data persistence + local dev strategy.",
+      "file": "agents/data.json",
+      "autoUpdate": {
+        "enabled": true,
+        "cadence": "weekly",
+        "owner": "github-actions-bot"
+      }
+    },
+    {
+      "id": "devops",
+      "name": "Azure DevOps / CI Engineer",
+      "purpose": "Wire CI/CD expectations for SWA and backend checks.",
+      "file": "agents/devops.json",
+      "autoUpdate": {
+        "enabled": true,
+        "cadence": "weekly",
+        "owner": "github-actions-bot"
+      }
+    },
+    {
+      "id": "security",
+      "name": "Azure Security Engineer",
+      "purpose": "AuthN/AuthZ plan (Entra ID), secrets, dependency hygiene.",
+      "file": "agents/security.json",
+      "autoUpdate": {
+        "enabled": true,
+        "cadence": "weekly",
+        "owner": "github-actions-bot"
+      }
+    }
+  ]
+}

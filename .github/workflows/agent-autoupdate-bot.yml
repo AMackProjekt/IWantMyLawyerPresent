@@ -1,0 +1,43 @@
+name: Agent Auto-Update Bot
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-agents:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Normalize agent configs
+        run: node scripts/auto-update-agents.mjs
+
+      - name: Create pull request for agent updates
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: 'chore(bots): auto-update agent config metadata'
+          title: 'chore(bots): auto-update agent config metadata'
+          body: |
+            Automated weekly update from Agent Auto-Update Bot.
+
+            Changes include:
+            - normalize agent JSON schema
+            - ensure autoUpdate metadata exists
+            - refresh generated agent registry
+          branch: chore/agent-autoupdate-bot
+          delete-branch: true
+          labels: |
+            automation
+            agents
