@@ -6,7 +6,7 @@
     "MAILCHIMP_API_KEY": "your-mailchimp-api-key-here",
     "MAILCHIMP_SERVER_PREFIX": "us1",
     "MAILCHIMP_AUDIENCE_ID": "your-audience-id-here",
-    "COSMOS_DB_ENDPOINT": "your-cosmos-endpoint",
+    "COSMOS_DB_ENDPOINT": "https://mackprojekt-db.documents.azure.com:443/",
     "COSMOS_DB_KEY": "your-cosmos-key",
     "JWT_SECRET": "your-secure-jwt-secret-minimum-32-characters",
     "COMMUNICATION_SERVICES_CONNECTION_STRING": "your-communication-services-connection",

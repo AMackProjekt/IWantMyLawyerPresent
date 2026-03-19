@@ -11,6 +11,9 @@
     "build": "tsc -p tsconfig.vite.json --noEmit && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "swa": "swa",
+    "swa:start": "swa start http://localhost:5173 --api-location api",
+    "swa:serve": "npm run build && swa start ./dist --api-location api",
     "reels:export": "node scripts/export-marketing-reels.mjs"
   },
   "dependencies": {
@@ -23,6 +26,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@azure/static-web-apps-cli": "^2.0.8",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",

@@ -101,6 +101,52 @@ export type SiteContent = {
     brandDescription: string;
     legalNote: string;
   };
+  theme: {
+    primaryColor: string;
+    secondaryColor: string;
+    accentColor: string;
+    backgroundColor: string;
+    textColor: string;
+    headingColor: string;
+    ctaBackgroundColor: string;
+    ctaTextColor: string;
+    navBackgroundColor: string;
+    footerBackgroundColor: string;
+  };
+  seo: {
+    pageTitle: string;
+    metaDescription: string;
+    ogImage: string;
+    siteName: string;
+    twitterHandle: string;
+    keywords: string;
+  };
+  social: {
+    instagram: string;
+    twitter: string;
+    facebook: string;
+    youtube: string;
+    tiktok: string;
+    linkedin: string;
+  };
+  analytics: {
+    googleAnalyticsId: string;
+    metaPixelId: string;
+    googleTagManagerId: string;
+  };
+  layout: {
+    heroAlignment: 'left' | 'center' | 'right';
+    heroSpacing: 'compact' | 'normal' | 'spacious';
+    ctaStyle: 'solid' | 'outline' | 'ghost';
+    containerWidth: 'narrow' | 'normal' | 'wide';
+    borderRadius: 'sharp' | 'rounded' | 'pill';
+  };
+  typography: {
+    headingFont: string;
+    bodyFont: string;
+    headingWeight: string;
+    baseSize: 'sm' | 'md' | 'lg';
+  };
 };
 
 export const defaultSiteContent: SiteContent = {
@@ -210,5 +256,52 @@ export const defaultSiteContent: SiteContent = {
     brandDescription: 'Official storefront for I Want My Lawyer Present apparel, accessories, and digital drops.',
     legalNote:
       'Product details, pricing, and availability may change without notice. Please review your order before submitting payment.',
+  },
+  theme: {
+    primaryColor: '#d4af37',
+    secondaryColor: '#c0c0c0',
+    accentColor: '#8b4513',
+    backgroundColor: '#000000',
+    textColor: '#ffffff',
+    headingColor: '#ffffff',
+    ctaBackgroundColor: '#d4af37',
+    ctaTextColor: '#000000',
+    navBackgroundColor: '#000000',
+    footerBackgroundColor: '#0a0a0a',
+  },
+  seo: {
+    pageTitle: 'I Want My Lawyer Present | Know Your Rights',
+    metaDescription:
+      'Official storefront for I Want My Lawyer Present — bold apparel and accessories that make a statement.',
+    ogImage: '/images/Book%20Cover.JPG',
+    siteName: 'I Want My Lawyer Present',
+    twitterHandle: '@iwmlp',
+    keywords: 'lawyer present, statement apparel, bold fashion, streetwear, legal rights',
+  },
+  social: {
+    instagram: '',
+    twitter: '',
+    facebook: '',
+    youtube: '',
+    tiktok: '',
+    linkedin: '',
+  },
+  analytics: {
+    googleAnalyticsId: '',
+    metaPixelId: '',
+    googleTagManagerId: '',
+  },
+  layout: {
+    heroAlignment: 'left',
+    heroSpacing: 'normal',
+    ctaStyle: 'solid',
+    containerWidth: 'normal',
+    borderRadius: 'rounded',
+  },
+  typography: {
+    headingFont: 'Inter',
+    bodyFont: 'Inter',
+    headingWeight: '700',
+    baseSize: 'md',
   },
 };
