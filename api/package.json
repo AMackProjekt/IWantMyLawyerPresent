@@ -16,7 +16,7 @@
     "@mailchimp/mailchimp_marketing": "^3.0.80",
     "applicationinsights": "^3.12.1",
     "bcryptjs": "^3.0.3",
-    "dotenv": "^17.2.3",
+    "dotenv": "^17.3.1",
     "jsonwebtoken": "^9.0.3",
     "passkit-generator": "^3.5.7",
     "zod": "^4.3.5"
